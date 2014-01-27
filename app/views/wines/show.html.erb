@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @wine.name %>
+</p>
+
+<p>
+  <strong>Grapes:</strong>
+  <%= @wine.grapes %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @wine.region %>
+</p>
+
+<p>
+  <strong>String:</strong>
+  <%= @wine.string %>
+</p>
+
+<p>
+  <strong>Stored:</strong>
+  <%= @wine.stored %>
+</p>
+
+<%= link_to 'Edit', edit_wine_path(@wine) %> |
+<%= link_to 'Back', wines_path %>

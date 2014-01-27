@@ -1,12 +1,13 @@
 <h1>Listing wines</h1>
 
+<div id="wine_list">
 <table>
   <thead>
     <tr>
-      <th id="test">Name</th>
+      <th>Name</th>
       <th>Grapes</th>
       <th>Region</th>
-      <th>String</th>
+      <th>Country</th>
       <th>Stored</th>
       <th></th>
       <th></th>
@@ -20,7 +21,7 @@
         <td><%= wine.name %></td>
         <td><%= wine.grapes %></td>
         <td><%= wine.region %></td>
-        <td><%= wine.string %></td>
+        <td><%= wine.country %></td>
         <td><%= wine.stored %></td>
         <td><%= link_to 'Show', wine %></td>
         <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
@@ -30,6 +31,9 @@
   </tbody>
 </table>
 
+</div>
+
 <br>
 
+<%= link_to 'Home', root_path %>
 <%= link_to 'New Wine', new_wine_path %>

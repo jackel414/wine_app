@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125225628) do
+ActiveRecord::Schema.define(version: 20140127185856) do
 
   create_table "wines", force: true do |t|
     t.string   "name"
     t.string   "grapes"
     t.string   "region"
-    t.string   "string"
+    t.string   "country"
     t.boolean  "stored"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,39 +1,77 @@
+$base_color: #18252D;
+$second_color: #4C5962;
+$third_color: #A1C4B6;
+$fourth_color: #FFFFAC;
+$fifth_color: #F2EFCE;
+$lead_font: Garamond, serif;
+$base_font: Verdana, Arial;
+
 body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+	background-color: #fff;
+	color: #333;
+	font-family: $base_font;
+	font-size: 13px;
+	line-height: 18px;
+	width: 66.5%; /* 904px */
+	margin: 25px auto 0 auto;
+	h1 {
+		font-size: 2em;
+	}
+	h2 {
+		font-size: 1.5em;
+	}
+	h3 {
+		font-size: 1.17em;
+	}
 }
 
-#container {
-  background-color: #fff;
-  width: 904px;
-  margin-left: auto;
-  margin-right: auto;
+header {
+	height: 80px;
+	font-family: $lead_font;
+	background-color: $fifth_color;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+main {
+	background-color: $third_color;
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 500px;
+	width: 100%;
+}
+
+footer {
+	height: 25px;
+	background-color: $second_color;
+	p {
+		color: black;
+		margin: 0 5px 0 0;
+		text-align: right;
+		font-size: .8em;
+	}
+}
+
+ol, ul, td {
+	font-family: $base_font;
+	font-size: 1em;
+	line-height: 1em;
 }
 
 pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+	background-color: #eee;
+	padding: 10px;
+	font-size: 11px;
 }
 
 a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+	color: #000;
+	
+	&:visited {
+		color: #666;
+	}
+	&:hover {
+		color: #fff;
+		background-color: #000;
+	}
 }
 
 div {

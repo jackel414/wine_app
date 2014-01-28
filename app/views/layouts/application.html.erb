@@ -7,12 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+	<h1>Wino Log</h1>
+	<h3>Keeping track of your wines, since you can't...</h3>
+</header>
+<main>
 
-<div id="container">
-<%= image_tag "banner.png" %>
+<!--<%= image_tag "banner.png" %>-->
 
 <%= yield %>
 
-</div>
+</main>
+<footer>
+<p>Copyright 2014</p>
+</footer>
 </body>
 </html>

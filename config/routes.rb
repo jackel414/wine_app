@@ -1,5 +1,6 @@
 WineApp::Application.routes.draw do
   root :to => "wines#home"
+  get "wines" => "wines#list"
   resources :wines
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,5 +1,5 @@
 WineApp::Application.routes.draw do
-  root :to => "wines#home"
+  root :to => "wines#index"
   get "wines" => "wines#list"
   resources :wines
 

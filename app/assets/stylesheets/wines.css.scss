@@ -2,7 +2,7 @@
 @import url(http://fonts.googleapis.com/css?family=News+Cycle:400,700);
 
 $base_color: #18252D;
-$second_color: #4C5962;
+$second_color: #4C5962; //#24C6FF
 $third_color: #A1C4B6;
 $fourth_color: #FFFFAC;
 $fifth_color: #F2EFCE;
@@ -23,7 +23,8 @@ body {
 	width: 66.5%; /* 904px */
 	h1 {
 		font-size: 3.2em;
-		margin: 5px 0 5px 0;
+		margin: 0 0 15px 0;
+		padding: 5px 0 0 0;
 	}
 	h2 {
 		font-size: 1.5em;
@@ -34,13 +35,19 @@ body {
 }
 
 header {
-	height: 80px;
+	height: 100px;
 	font-family: $header_font;
 	background-color: $fifth_color;
+	h1 {
+		padding: 20px 0 5px 0;
+		margin: 0 0 0 5px;
+		color: #611024;
+	}
 }
 
 .tagline {
 	font-family: $base_font;
+	margin: 15px 0 0 5px;
 }
 
 main {

@@ -1,9 +1,6 @@
 class WinesController < ApplicationController
-  before_action :set_wine, only: [:show, :edit, :update, :destroy]
+  before_action :set_wine, only: [:show, :edit, :drink, :update, :destroy]
 
-  def home
-  end
-  
   # GET /wines
   # GET /wines.json
   def index
@@ -11,7 +8,11 @@ class WinesController < ApplicationController
   end
 
   # GET /wines/all
-  def list
+  def cellar
+	@wines = Wine.all
+  end
+  
+  def finished_wines
 	@wines = Wine.all
   end
   
@@ -27,6 +28,10 @@ class WinesController < ApplicationController
 
   # GET /wines/1/edit
   def edit
+  end
+  
+  def drink
+	@wine.update_attributes(:stored => false)
   end
 
   # POST /wines
@@ -77,6 +82,6 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :grapes, :region, :string, :stored)
+      params.require(:wine).permit(:name, :grapes, :region, :country, :stored)
     end
 end

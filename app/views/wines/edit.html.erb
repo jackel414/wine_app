@@ -1,6 +1,16 @@
-<h1>Editing wine</h1>
+<section>
+	<h1>Editing wine</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @wine %> |
-<%= link_to 'Back', wines_path %>
+	<div class="button">
+		<%= link_to 'Show', @wine %>
+	</div>
+
+	<div class="spacer"></div>
+
+	<div class="button">
+		<%= link_to 'Back', wines_path %>
+	</div>
+
+</section>

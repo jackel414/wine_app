@@ -1,4 +1,20 @@
+<section>
+	<div class="front_image"><%= image_tag "grapes.png" %></div>
 
-<br>
-<%= link_to 'All Wines', wines_path %>
-<%= link_to 'New Wine', new_wine_path %>
+	<br>
+	<div class="button">
+		<%= link_to 'Wine Cellar', wines_path %>
+	</div>
+	
+	<div class="spacer"></div>
+	
+	<div class="button">
+		<%= link_to 'Wine Catalog', finished_wines_path %>
+	</div>
+
+	<div class="spacer"></div>
+	
+	<div class="button">
+		<%= link_to 'New Wine', new_wine_path %>
+	</div>
+</section>

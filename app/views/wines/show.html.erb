@@ -1,29 +1,42 @@
-<p id="notice"><%= notice %></p>
+<section>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @wine.name %>
-</p>
+	<h1><%= @wine.name %></h1>
 
-<p>
-  <strong>Grapes:</strong>
-  <%= @wine.grapes %>
-</p>
+	<div class="wine_details">
+		<p>
+		  <strong>Grapes:</strong>
+		  <%= @wine.grapes %>
+		</p>
 
-<p>
-  <strong>Region:</strong>
-  <%= @wine.region %>
-</p>
+		<p>
+		  <strong>Region:</strong>
+		  <%= @wine.region %>
+		</p>
 
-<p>
-  <strong>String:</strong>
-  <%= @wine.country %>
-</p>
+		<p>
+		  <strong>Country:</strong>
+		  <%= @wine.country %>
+		</p>
 
-<p>
-  <strong>Stored:</strong>
-  <%= @wine.stored %>
-</p>
+		<p>
+			<strong>Stored:</strong>
+			<% if @wine.stored == true %>
+				Yes
+			<% else %>
+				No
+			<% end %>
+		</p>
+	</div>
 
-<%= link_to 'Edit', edit_wine_path(@wine) %> |
-<%= link_to 'Back', wines_path %>
+	<div class="button">
+		<%= link_to 'Edit', edit_wine_path(@wine) %>
+	</div>
+
+	<div class="spacer"></div>
+
+	<div class="button">
+		<%= link_to 'Back', wines_path %>
+	</div>
+
+</section>

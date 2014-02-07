@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127185856) do
+ActiveRecord::Schema.define(version: 20140206234727) do
 
   create_table "wines", force: true do |t|
     t.string   "name"
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(version: 20140127185856) do
     t.boolean  "stored"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "sub_region"
+    t.string   "winery"
+    t.string   "vintage"
+    t.string   "location"
+    t.string   "type"
+    t.integer  "price"
+    t.boolean  "catalog"
+    t.string   "purchase_date"
+    t.string   "drink_date"
+    t.boolean  "with_meal"
+    t.string   "meal"
+    t.string   "notes"
+    t.integer  "rating"
+    t.integer  "num_bottles"
+    t.float    "abv"
   end
 
 end

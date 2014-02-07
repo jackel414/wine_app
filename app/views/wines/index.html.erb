@@ -3,13 +3,13 @@
 
 	<br>
 	<div class="button">
-		<%= link_to 'Wine Cellar', wines_path %>
+		<%= link_to 'Wine Cellar', wines_path(:status => "cellared") %>
 	</div>
 	
 	<div class="spacer"></div>
 	
 	<div class="button">
-		<%= link_to 'Wine Catalog', finished_wines_path %>
+		<%= link_to 'Wine Catalog', wines_path(:status => "cataloged") %>
 	</div>
 
 	<div class="spacer"></div>

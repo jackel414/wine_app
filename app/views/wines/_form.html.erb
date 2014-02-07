@@ -18,13 +18,58 @@
     <%= f.label :grapes %>: <%= f.text_field :grapes %>
   </div>
   <div class="field">
-    <%= f.label :region %>: <%= f.text_field :region %>
-  </div>
-  <div class="field">
     <%= f.label :country %>: <%= f.text_field :country %>
   </div>
   <div class="field">
+    <%= f.label :region %>: <%= f.text_field :region %><a href="#" id="sub_region_link">add sub-region</a>
+  </div>
+  <div class="field" id="sub_region_field">
+    <%= f.label :sub_region %>: <%= f.text_field :sub_region %>
+  </div>
+  <div class="field">
     <%= f.label :stored %>: <%= f.check_box :stored %>
+  </div>
+  <div class="field">
+    <%= f.label :winery %>: <%= f.text_field :winery %>
+  </div>
+  <div class="field">
+    <%= f.label :vintage %>: <%= f.text_field :vintage %>
+  </div>
+  <div class="field">
+    <%= f.label :location %>: <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :type %>: <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :price %>: <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :catalog %>: <%= f.text_field :catalog %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_date %>: <%= f.text_field :purchase_date %>
+  </div>
+  <div class="field">
+    <%= f.label :drink_date %>: <%= f.text_field :drink_date %>
+  </div>
+  <div class="field">
+    <%= f.label :with_meal %>: <%= f.text_field :with_meal %>
+  </div>
+  <div class="field">
+    <%= f.label :meal %>: <%= f.text_field :meal %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %>: <%= f.text_field :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %>: <%= f.text_field :rating %>
+  </div>
+  <div class="field">
+    <%= f.label :num_bottles %>: <%= f.text_field :num_bottles %>
+  </div>
+  <div class="field">
+    <%= f.label :abv %>: <%= f.text_field :abv %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -7,13 +7,13 @@ class WinesController < ApplicationController
 	@wines = Wine.all
   end
 
-  # GET /wines/all
+  # GET /wines
   def cellar
-	@wines = Wine.all
-  end
-  
-  def finished_wines
-	@wines = Wine.all
+	if params[:status] == "cellared"
+		@wines = Wine.cellared
+	elsif params[:status] == "cataloged"
+		@wines = Wine.cataloged
+	end
   end
   
   # GET /wines/1
@@ -30,6 +30,7 @@ class WinesController < ApplicationController
   def edit
   end
   
+  # GET /wines/drink/1
   def drink
 	@wine.update_attributes(:stored => false)
   end
@@ -82,6 +83,6 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :grapes, :region, :country, :stored)
+      params.require(:wine).permit(:name, :grapes, :region, :country, :stored, :sub_region)
     end
 end

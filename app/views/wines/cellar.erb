@@ -1,16 +1,14 @@
 <section>
-<h1>Wine Cellar</h1>
+<h1>Wine <% if params[:status] == "cellared" %>Cellar<% else %>Catalog<% end %></h1>
 
 <div id="wine_list">
 
 <% @wines.each do |w| %>
-<% if w.stored == true %>
-	<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region %>, <%= w.country %>
+	<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region %>, <%= w.country %> Cellared: <strong><%= w.stored %></strong>
 	<div class="actions">
-		<%= link_to 'Edit', edit_wine_path(w) %> <%= link_to 'Drink!', drink_wine_path(w), data: { confirm: 'Are you sure?' } %>
+		<%= link_to 'Edit', edit_wine_path(w, :status => params[:status]) %> <% if w.stored == true %><%= link_to 'Drink!', drink_wine_path(w), data: { confirm: 'Are you sure?' } %><% end %>
 	</div>
 	<br>
-<% end %>
 <% end %>
 </div>
 

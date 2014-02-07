@@ -27,7 +27,7 @@
     <%= f.label :sub_region %>: <%= f.text_field :sub_region %>
   </div>
   <div class="field">
-    <%= f.label :stored %>: <%= f.check_box :stored %>
+    <%= f.label :stored, 'In Cellar?' %>: <%= f.check_box :stored %>
   </div>
   <div class="field">
     <%= f.label :winery %>: <%= f.text_field :winery %>
@@ -48,25 +48,25 @@
     <%= f.label :catalog %>: <%= f.text_field :catalog %>
   </div>
   <div class="field">
-    <%= f.label :purchase_date %>: <%= f.text_field :purchase_date %>
+    <%= f.label :purchase_date %>: <%= f.text_field :purchase_date, :class => 'date_picker' %>
   </div>
   <div class="field">
-    <%= f.label :drink_date %>: <%= f.text_field :drink_date %>
+    <%= f.label :drink_date %>: <%= f.text_field :drink_date, :class => 'date_picker' %>
   </div>
   <div class="field">
-    <%= f.label :with_meal %>: <%= f.text_field :with_meal %>
+    <%= f.label :with_meal %>: <%= f.select :with_meal, [['', nil], ['Yes', true], ['No', false]] %>
   </div>
   <div class="field">
     <%= f.label :meal %>: <%= f.text_field :meal %>
   </div>
   <div class="field">
-    <%= f.label :notes %>: <%= f.text_field :notes %>
+    <%= f.label :notes %>: <%= f.text_area :notes %>
   </div>
   <div class="field">
-    <%= f.label :rating %>: <%= f.text_field :rating %>
+    <%= f.label :rating %>: <%= f.select :rating, [['', nil], ['1 Star', 1], ['2 Stars', 2], ['3 Stars', 3], ['4 Stars', 4], ['5 Stars', 5]] %>
   </div>
   <div class="field">
-    <%= f.label :num_bottles %>: <%= f.text_field :num_bottles %>
+    <%= f.label :num_bottles %>: <%= f.number_field :num_bottles %>
   </div>
   <div class="field">
     <%= f.label :abv %>: <%= f.text_field :abv %>

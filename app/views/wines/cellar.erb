@@ -4,7 +4,9 @@
 <div id="wine_list">
 
 <% @wines.each do |w| %>
-	<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region %>, <%= w.country %> Cellared: <strong><%= w.stored %></strong>
+	<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region %>, <%= w.country %> 
+	Cellared: <strong><% if w.stored == true %>Yes<% else %>No<% end %></strong>
+	<%= w.sub_region %>, <%= w.winery %>, <%= w.vintage %>, <%= w.location %>, <%= w.type %>, <%= w.price %>, <%= w.catalog %>, <%= w.purchase_date %>, <%= w.drink_date %>, <%= w.with_meal %>, <%= w.meal %>, <%= w.notes %>, <%= w.rating %>, <%= w.num_bottles %>, <%= w.abv %>
 	<div class="actions">
 		<%= link_to 'Edit', edit_wine_path(w, :status => params[:status]) %> <% if w.stored == true %><%= link_to 'Drink!', drink_wine_path(w), data: { confirm: 'Are you sure?' } %><% end %>
 	</div>
@@ -19,7 +21,19 @@
 	</div>
 
 	<div class="spacer"></div>
-
+	
+	<% if params[:status] == "cellared" %>
+		<div class="button">
+			<%= link_to 'Wine Catalog', wines_path(:status => "cataloged") %>
+		</div>
+	<% else %>
+		<div class="button">
+			<%= link_to 'Wine Cellar', wines_path(:status => "cellared") %>
+		</div>
+	<% end %>
+	
+	<div class="spacer"></div>
+	
 	<div class="button">
 		<%= link_to 'New Wine', new_wine_path %>
 	</div>

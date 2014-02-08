@@ -5,9 +5,11 @@ ready = function() {
 		$("#sub_region_field").slideToggle(5);
 	});
 };
-
-$(document).ready(ready);
-$(document).on('page:load', ready);
-$(document).ready(function() {
+var datePicker;
+datePicker = function() {
 	$('.date_picker').datepicker();
-});
+};	
+
+$(document).ready(ready, datePicker);
+$(document).on('page:load', ready);
+$(document).on('page:load', datePicker);

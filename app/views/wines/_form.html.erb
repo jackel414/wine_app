@@ -39,16 +39,19 @@
     <%= f.label :location %>: <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :type %>: <%= f.text_field :type %>
+    <%= f.label :wine_type %>: <%= f.text_field :wine_type %>
   </div>
   <div class="field">
     <%= f.label :price %>: <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :catalog %>: <%= f.text_field :catalog %>
+    <%= f.label :purchase_date %>: <%= f.text_field :purchase_date, :class => 'date_picker' %>
   </div>
   <div class="field">
-    <%= f.label :purchase_date %>: <%= f.text_field :purchase_date, :class => 'date_picker' %>
+    <%= f.label :num_bottles %>: <%= f.number_field :num_bottles %>
+  </div>
+  <div class="field">
+    <%= f.label :catalog %>: <%= f.check_box :catalog %>
   </div>
   <div class="field">
     <%= f.label :drink_date %>: <%= f.text_field :drink_date, :class => 'date_picker' %>
@@ -64,9 +67,6 @@
   </div>
   <div class="field">
     <%= f.label :rating %>: <%= f.select :rating, [['', nil], ['1 Star', 1], ['2 Stars', 2], ['3 Stars', 3], ['4 Stars', 4], ['5 Stars', 5]] %>
-  </div>
-  <div class="field">
-    <%= f.label :num_bottles %>: <%= f.number_field :num_bottles %>
   </div>
   <div class="field">
     <%= f.label :abv %>: <%= f.text_field :abv %>

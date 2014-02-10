@@ -6,7 +6,7 @@
 <% @wines.each do |w| %>
 	<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region %>, <%= w.country %> 
 	Cellared: <strong><% if w.stored == true %>Yes<% else %>No<% end %></strong>
-	<%= w.sub_region %>, <%= w.winery %>, <%= w.vintage %>, <%= w.location %>, <%= w.wine_type %>, <%= w.price %>, <%= w.catalog %>, <%= w.purchase_date %>, <%= w.drink_date %>, <%= w.with_meal %>, <%= w.meal %>, <%= w.notes %>, <%= w.rating %>, <%= w.num_bottles %>, <%= w.abv %>
+	<%= w.sub_region %>, <%= w.winery %>, <%= w.vintage %>, <%= w.location %>, <%= w.wine_type %>, <%= number_to_currency w.price %>, <%= w.catalog %>, <%= w.purchase_date %>, <%= w.drink_date %>, <%= w.with_meal %>, <%= w.meal %>, <%= w.notes %>, <%= w.rating %>, <%= w.num_bottles %>, <%= w.abv %>
 	<div class="actions">
 		<%= link_to 'Edit', edit_wine_path(w, :status => params[:status]) %> <% if w.stored == true %><%= link_to 'Drink!', drink_wine_path(w), data: { confirm: 'Are you sure?' } %><% end %>
 	</div>

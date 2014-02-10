@@ -1,8 +1,12 @@
 WineApp::Application.routes.draw do
-  root :to => "wines#index"
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  root :to => "users#index"
   get "wines" => "wines#cellar"
   get "/wines/:id/drink" => "wines#drink", as: :drink_wine
   resources :wines
+  resources :users
+  resources :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

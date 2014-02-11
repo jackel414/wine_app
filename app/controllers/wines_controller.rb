@@ -10,11 +10,11 @@ class WinesController < ApplicationController
   # GET /wines
   def cellar
 	if params[:status] == "cellared"
-		@wines = Wine.cellared
+		@wines = Wine.where(user_id: current_user.id, stored: true)
 	elsif params[:status] == "cataloged"
-		@wines = Wine.cataloged
+		@wines = Wine.where(user_id: current_user.id, catalog: true)
 	else
-		@wines = Wine.all
+		@wines = Wine.where(user_id: current_user.id)
 	end
   end
   
@@ -41,6 +41,7 @@ class WinesController < ApplicationController
   # POST /wines.json
   def create
     @wine = Wine.new(wine_params)
+	@wine.user_id = current_user.id
 
     respond_to do |format|
       if @wine.save
@@ -85,6 +86,6 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :grapes, :region, :country, :stored, :sub_region, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv)
+      params.require(:wine).permit(:name, :grapes, :region, :country, :stored, :sub_region, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv, :user_id)
     end
 end

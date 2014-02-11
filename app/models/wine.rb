@@ -1,4 +1,6 @@
 class Wine < ActiveRecord::Base
-	scope :cellared, where(stored: true)
-	scope :cataloged, where(stored: false)
+  belongs_to :user
+  
+  scope :cellared, where(stored: true)
+  scope :cataloged, where(stored: false)
 end

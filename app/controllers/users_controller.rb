@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  skip_before_filter :require_login, only: [:new, :create, :show]
+  after_action :auto_register_email, only: [:create]
   
   # GET /users
   # GET /users.json
@@ -42,6 +44,11 @@ class UsersController < ApplicationController
 	end
 	
 	def user_params
-	  params.require(:user).permit(:first_name, :last_name, :email, :username, :password)
+	  params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation)
 	end
+    
+	def auto_register_email
+	  RegistrationMailer.registration_email(self).deliver
+	end
+	  
 end

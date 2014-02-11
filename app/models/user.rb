@@ -2,10 +2,11 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
   
+  has_many :wine, dependent: :destroy
+  
+  validates_presence_of :password, :email, :first_name, :last_name, :username, :on => :create
   validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  validates_uniqueness_of :email, :username
   
   def self.authenticate(username, password)
     user = find_by_username(username)

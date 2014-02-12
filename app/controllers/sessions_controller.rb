@@ -4,11 +4,14 @@ class SessionsController < ApplicationController
   def new
   end
   
+  def welcome
+  end
+  
   def create
 	user = User.authenticate(params[:username], params[:password])
 	if user
 	  session[:user_id] = user.id
-	  redirect_to root_url, :notice => "logged in"
+	  redirect_to home_path, :notice => "logged in"
 	else
 	  flash.now.alert = "invalid username/password"
 	  render "new"

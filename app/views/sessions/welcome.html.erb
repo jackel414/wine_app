@@ -1,0 +1,32 @@
+<section>
+	<h1>Wine Log</h1>
+
+	<h3>Welcome to Wino Log, your personal wine tracking app.  If you don't yet have an account, sign up!  Otherwise, log in below.</h3>
+
+	<div class="button" id="login_button">
+		<a href="#">Log In</a>
+	</div>
+	
+	<div class="spacer"></div>
+	
+	<div class="button">
+		<%= link_to 'Sign Up', new_user_path %>
+	</div>
+	
+	<br />
+	
+	<div id="login_form_container">
+	<div id="login_form">
+		<%= form_tag sessions_path do %>
+			<p>
+				<%= label_tag :username %>: <%= text_field_tag :username, params[:username] %>
+			</p>
+			<p>
+				<%= label_tag :password %>: <%= password_field_tag :password %>
+			</p>
+			<p><%= submit_tag 'Log In' %>
+		<% end %>
+	</div>
+	</div>
+	
+</section>

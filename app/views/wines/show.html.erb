@@ -36,7 +36,11 @@
 	<div class="spacer"></div>
 
 	<div class="button">
-		<%= link_to 'Back', wines_path %>
+		<% if @wine.stored == true %>
+			<%= link_to 'Back', wines_path(:status => "cellared") %>
+		<% else %>
+			<%= link_to 'Back', wines_path(:status => "cataloged") %>
+		<% end %>
 	</div>
 
 </section>

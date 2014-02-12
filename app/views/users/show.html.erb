@@ -1,24 +1,9 @@
 <section>
-	<p id="notice"><%= notice %></p>
 
-	<h1><%= @user.first_name %></h1>
-	<br>
-
-	<div class="wine_details">
-		<p>
-		  <strong>Email Address:</strong>
-		  <%= @user.email %>
-		</p>
-		
-		<p>
-		  <strong>Username:</strong>
-		  <%= @user.username %>
-		</p>
-
-		<p>
-		  <strong>Password:</strong>
-		  <%= @user.password %>
-		</p>
-	</div>
+	<h2>Welcome to Wine Log, <%= @user.first_name %>.</h2><br />
+	
+	<h3><%= notice %>  <%= link_to 'Log in', log_in_path %> to begin logging your wines!</h3>
+	
+	<br />
 
 </section>

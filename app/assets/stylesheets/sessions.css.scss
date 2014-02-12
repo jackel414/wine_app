@@ -2,3 +2,15 @@
 	float: right;
 	margin: 0 10px 0 0;
 }
+
+#login_form {
+	display: none;
+	position: absolute;
+	border: 1px solid #611024;
+	padding: 5px;
+}
+
+#login_form_container {
+	width: 215px;
+	margin: 20px auto 0 auto;
+}

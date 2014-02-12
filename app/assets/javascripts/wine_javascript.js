@@ -1,15 +1,27 @@
-var ready;
-ready = function() {
+$(document).ready(function() {
 	$("#sub_region_link").on("click", function(event) {
 		event.preventDefault();
 		$("#sub_region_field").slideToggle(5);
 	});
-};
-var datePicker;
-datePicker = function() {
-	$('.date_picker').datepicker();
-};	
 
-$(document).ready(ready, datePicker);
-$(document).on('page:load', ready);
-$(document).on('page:load', datePicker);
+	$('.date_picker').datepicker();
+
+	$("#login_button").on("click", function(event) {
+		event.preventDefault();
+		$("#login_form").slideToggle(100);
+	});
+});
+
+$(document).on('page:load', function() {
+	$("#sub_region_link").on("click", function(event) {
+		event.preventDefault();
+		$("#sub_region_field").slideToggle(5);
+	});
+
+	$('.date_picker').datepicker();
+
+	$("#login_button").on("click", function(event) {
+		event.preventDefault();
+		$("#login_form").slideToggle(100);
+	});
+});

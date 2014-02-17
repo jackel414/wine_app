@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :wine, dependent: :destroy
   
   validates_presence_of :password, :email, :first_name, :last_name, :username, :on => :create
+  validates_presence_of :email, :first_name, :last_name, :username, :on => :update
   validates_confirmation_of :password
   validates_uniqueness_of :email, :username
   

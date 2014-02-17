@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  skip_before_filter :require_login, only: [:new, :create, :show]
+  skip_before_action :require_login, only: [:new, :create, :show]
   
   # GET /users
   # GET /users.json
@@ -33,6 +33,18 @@ class UsersController < ApplicationController
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'Profile was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

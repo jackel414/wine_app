@@ -1,46 +1,110 @@
 <section>
 	<p id="notice"><%= notice %></p>
 
-	<h1><%= @wine.name %></h1>
-
 	<div class="wine_details">
-		<p>
-		  <strong>Grapes:</strong>
-		  <%= @wine.grapes %>
-		</p>
+		<h1><%= @wine.name %></h1>
 
-		<p>
-		  <strong>Region:</strong>
-		  <%= @wine.region %>
-		</p>
+		<div id="cellared_details" class="show_wine_section">
+			<p><em>Wine Details:</em></p>
+			
+			<p>
+			  <strong>Grape(s):</strong>
+			  <%= @wine.grapes %>
+			</p>
 
-		<p>
-		  <strong>Country:</strong>
-		  <%= @wine.country %>
-		</p>
+			<p>
+			  <strong>Region:</strong>
+			  <%= @wine.region %><% if @wine.add_region != nil && @wine.add_region != '' %>, <%= @wine.add_region %><% end %>
+			</p>
 
-		<p>
-			<strong>Stored:</strong>
-			<% if @wine.stored == true %>
-				Yes
+			<p>
+			  <strong>Country:</strong>
+			  <%= @wine.country %>
+			</p>
+
+			<p>
+				<strong>Bottles in Cellar:</strong>
+				<% if @wine.stored == false || @wine.num_bottles == 0 %>
+					None
+				<% else %>
+					<%= @wine.num_bottles %>
+				<% end %>
+			</p>
+			
+			<p>
+				<strong>Winery:</strong>
+				<%= @wine.winery %>
+			</p>
+			
+			<p>
+				<strong>Vintage:</strong>
+				<%= @wine.vintage %>
+			</p>
+
+			<p>
+				<strong>Winery:</strong>
+				<%= number_to_currency @wine.price %>
+			</p>
+
+			<p>
+				<strong>Location Purchased:</strong>
+				<%= @wine.location %>
+			</p>
+
+			<p>
+				<strong>Purchase Date:</strong>
+				<%= @wine.purchase_date %>
+			</p>
+		</div>
+		
+		<div id="cataloged_details" class="show_wine_section">
+			<p><em>Catalog Details:</em></p>
+			
+			<% if @wine.catalog == true %>
+				<p>
+					<strong>Drink Date:</strong>
+					<%= @wine.drink_date %>
+				</p>
+
+				<p>
+					<strong>ABV:</strong>
+					<%= @wine.abv %>%
+				</p>
+				
+				<% if @wine.with_meal == true %>
+					<p>
+						<strong>Meal:</strong>
+						<%= @wine.meal %>
+					</p>
+				<% end %>
+				
+				<p>
+					<strong>Rating:</strong>
+					<%= @wine.rating %>
+				</p>
+
+				<p>
+					<strong>Notes:</strong>
+					<%= @wine.notes %>
+				</p>
 			<% else %>
-				No
+				<p>
+					Wine has not been added to your catalog.  <strong><%= link_to 'Click here', edit_wine_path(@wine) %></strong> to add it now.
+				</p>
 			<% end %>
-		</p>
+		</div>
 	</div>
 
-	<div class="button">
-		<%= link_to 'Edit', edit_wine_path(@wine) %>
-	</div>
+	<div class="wine_cellar_buttons_top">
+		<div class="button">
+			<%= link_to 'Edit', edit_wine_path(@wine) %>
+		</div>
 
-	<div class="spacer"></div>
+		<div class="spacer"></div>
 
-	<div class="button">
-		<% if @wine.stored == true %>
-			<%= link_to 'Back', wines_path(:status => "cellared") %>
-		<% else %>
-			<%= link_to 'Back', wines_path(:status => "cataloged") %>
-		<% end %>
+		<div class="button">
+			<%= link_to 'Back', wines_path %>
+		</div>
 	</div>
 
 </section>

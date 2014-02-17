@@ -11,67 +11,215 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>: <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :grapes %>: <%= f.text_field :grapes %>
-  </div>
-  <div class="field">
-    <%= f.label :country %>: <%= f.text_field :country %>
-  </div>
-  <div class="field">
-    <%= f.label :region %>: <%= f.text_field :region %><a href="#" id="sub_region_link">add sub-region</a>
-  </div>
-  <div class="field" id="sub_region_field">
-    <%= f.label :sub_region %>: <%= f.text_field :sub_region %>
-  </div>
-  <div class="field">
-    <%= f.label :stored, 'In Cellar?' %>: <%= f.check_box :stored %>
-  </div>
-  <div class="field">
-    <%= f.label :winery %>: <%= f.text_field :winery %>
-  </div>
-  <div class="field">
-    <%= f.label :vintage %>: <%= f.text_field :vintage %>
-  </div>
-  <div class="field">
-    <%= f.label :location %>: <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :wine_type %>: <%= f.text_field :wine_type %>
-  </div>
-  <div class="field">
-    <%= f.label :price %>: <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :purchase_date %>: <%= f.text_field :purchase_date, :class => 'date_picker' %>
-  </div>
-  <div class="field">
-    <%= f.label :num_bottles %>: <%= f.number_field :num_bottles %>
-  </div>
-  <div class="field">
-    <%= f.label :catalog %>: <%= f.check_box :catalog %>
-  </div>
-  <div class="field">
-    <%= f.label :drink_date %>: <%= f.text_field :drink_date, :class => 'date_picker' %>
-  </div>
-  <div class="field">
-    <%= f.label :with_meal %>: <%= f.select :with_meal, [['', nil], ['Yes', true], ['No', false]] %>
-  </div>
-  <div class="field">
-    <%= f.label :meal %>: <%= f.text_field :meal %>
-  </div>
-  <div class="field">
-    <%= f.label :notes %>: <%= f.text_area :notes %>
-  </div>
-  <div class="field">
-    <%= f.label :rating %>: <%= f.select :rating, [['', nil], ['1 Star', 1], ['2 Stars', 2], ['3 Stars', 3], ['4 Stars', 4], ['5 Stars', 5]] %>
-  </div>
-  <div class="field">
-    <%= f.label :abv %>: <%= f.text_field :abv %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<table>
+<tbody>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :name %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :name %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :grapes %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :grapes %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :country %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :country %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :region %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :region %> <a href="#" id="sub_region_link">add additional-region</a>
+		</td>
+	</tr>
+	<tr id="sub_region_field">
+		<td>
+			<div class="field">
+				<%= f.label :add_region, 'Region' %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :add_region %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :stored, 'In Cellar?' %>:
+			</div>
+		</td>
+		<td>
+			<%= f.check_box :stored %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :winery %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :winery %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :vintage %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :vintage %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :location %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :location %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :wine_type %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :wine_type %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :price %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :price %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :purchase_date %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :purchase_date, :class => 'date_picker' %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :num_bottles %>:
+			</div>
+		</td>
+		<td>
+			<%= f.number_field :num_bottles %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :catalog %>:
+			</div>
+		</td>
+		<td>
+			<%= f.check_box :catalog %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :drink_date %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :drink_date, :class => 'date_picker' %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :with_meal %>:
+			</div>
+		</td>
+		<td>
+			<%= f.select :with_meal, [['', nil], ['Yes', true], ['No', false]] %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :meal %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :meal %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :notes %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_area :notes %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :rating %>:
+			</div>
+		</td>
+		<td>
+			<%= f.select :rating, [['', nil], ['1 Star', 1], ['2 Stars', 2], ['3 Stars', 3], ['4 Stars', 4], ['5 Stars', 5]] %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :abv %>:
+			</div>
+		</td>
+		<td>
+			<%= f.text_field :abv %>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<div class="actions">
+				<%= f.submit %>
+			</div>
+		</td>
+	</tr>
+</tbody>
+</table>
 <% end %>

@@ -3,6 +3,7 @@ class RegistrationMailer < ActionMailer::Base
   
   def registration_email(user)
 	@user = user
-    mail to: @user.email, subject: 'Sign Up Confirmation'
+	@url = 'http://www.flyingvines.com'
+    mail to: @user.email, subject: 'Welcome!', from: 'Wino Log <zack@wineapp.com>', bcc: 'zackmays@gmail.com'
   end
 end

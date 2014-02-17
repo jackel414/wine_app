@@ -2,20 +2,15 @@
 	<div class="front_image"><%= image_tag "grapes.png" %></div>
 
 	<br>
+
 	<div class="button">
-		<%= link_to 'Wine Cellar', wines_path(:status => "cellared") %>
-	</div>
-	
-	<div class="spacer"></div>
-	
-	<div class="button">
-		<%= link_to 'Wine Catalog', wines_path(:status => "cataloged") %>
+		<%= link_to 'My Wines', wines_path %>
 	</div>
 
 	<div class="spacer"></div>
 	
 	<div class="button">
-		<%= link_to 'New Wine', new_wine_path %>
+		<%= link_to 'Add Wine', new_wine_path %>
 	</div>
 	
 </section>

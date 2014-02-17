@@ -1,0 +1,171 @@
+@import "_variables";
+
+
+/***************************
+STYLES
+****************************/
+
+
+html {
+	width: 100%;
+	background: #fff;
+}
+
+body {
+	background-color: $body_color;
+	color: #333;
+	font-family: $base_font;
+	font-size: 13px;
+	line-height: 18px;
+	margin: 0 auto 0 auto;
+	width: 66.5%; /* 904px */
+}
+
+header {
+	height: 100px;
+	font-family: $header_font;
+	background-color: $header_color;
+	h1 {
+		padding: 20px 0 5px 0;
+		margin: 0 0 0 5px;
+		color: $logo_color;
+		a {
+			color: $logo_color;
+		}
+	}
+	a {
+		color: black;
+	}
+}
+
+main {
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 500px;
+	h1 {
+		margin: 10px 0 0 10px;
+	}
+}
+
+footer {
+	height: 25px;
+	background-color: $footer_color;
+	p {
+		color: black;
+		margin: 0 5px 0 0;
+		text-align: right;
+		font-size: .8em;
+	}
+}
+
+section {
+	text-align: center;
+	padding: 30px 0 0 0;
+}
+
+h1 {
+	font-size: 3.2em;
+	margin: 0 0 15px 0;
+	padding: 5px 0 15px 0;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+h3 {
+	font-size: 1.17em;
+}
+
+a {
+	color: $logo_color;
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.tagline {
+	font-family: $base_font;
+	margin: 15px 0 0 5px;
+}
+
+.button {
+	font-family: $base_font;
+	font-size: 2em;
+	border: 1px solid black;
+	width: 160px;
+	text-align: center;
+	margin: 10px auto 10px auto;
+	padding: 0 0 5px 0;
+	cursor: pointer;
+	display: inline-block;
+	a {
+		color: black;
+	}
+}
+
+.spacer {
+	width: 10px;
+	display: inline-block;
+}
+
+
+
+/***************************
+ALREADY EXISTING ELEMENTS
+****************************/
+
+
+
+ol, ul, td {
+	font-family: $base_font;
+	font-size: 1em;
+	line-height: 1em;
+}
+
+pre {
+	background-color: #eee;
+	padding: 10px;
+	font-size: 11px;
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 1px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 1px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  background-color: #f0f0f0;
+  margin: 0 auto 20px auto;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: dot;
+	text-align: left;
+  }
+}

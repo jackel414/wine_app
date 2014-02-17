@@ -1,44 +1,72 @@
 <section>
-<h1>Wine <% if params[:status] == "cellared" %>Cellar<% else %>Catalog<% end %></h1>
-
-<div id="wine_list">
-
-<% if @wines.empty? %>
-	<p><em>No wines to display.</em></p>
-<% else %>
-	<% @wines.each do |w| %>
-		<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region %>, <%= w.country %> 
-		Cellared: <strong><% if w.stored == true %>Yes<% else %>No<% end %></strong>
-		<%= w.sub_region %>, <%= w.winery %>, <%= w.vintage %>, <%= w.location %>, <%= w.wine_type %>, <%= number_to_currency w.price %>, <%= w.catalog %>, <%= w.purchase_date %>, <%= w.drink_date %>, <%= w.with_meal %>, <%= w.meal %>, <%= w.notes %>, <%= w.rating %>, <%= w.num_bottles %>, <%= w.abv %>
-		<div class="actions">
-			<%= link_to 'Edit', edit_wine_path(w, :status => params[:status]) %> <% if w.stored == true %><%= link_to 'Drink!', drink_wine_path(w), data: { confirm: 'Are you sure?' } %><% end %>
+	<div class="wine_cellar_buttons_top">
+		<% if params[:status] == nil %>
+			<div class="wine_cellar_button_active">
+		<% else %>
+			<div class="wine_cellar_button">
+		<% end %>
+			<%= link_to 'All Wines', wines_path %>
 		</div>
-		<br>
+
+		<div class="spacer"></div>
+		
+		<% if params[:status] == "cellared" %>
+			<div class="wine_cellar_button_active">
+		<% else %>
+			<div class="wine_cellar_button">
+		<% end %>
+			<%= link_to 'My Cellar', wines_path(:status => "cellared") %>
+		</div>
+		
+		<div class="spacer"></div>
+		
+		<% if params[:status] == "cataloged" %>
+			<div class="wine_cellar_button_active">
+		<% else %>
+			<div class="wine_cellar_button">
+		<% end %>
+			<%= link_to 'My Catalog', wines_path(:status => "cataloged") %>
+		</div>
+	</div>
+	
+	<h1>
+		<% if params[:status] == "cellared" %>
+			My Wine Cellar
+		<% elsif params[:status] == "cataloged" %>
+			My Wine Catalog
+		<% else %>
+			My Wines
+		<% end %>
+	</h1>
+
+	<div id="wine_list">
+
+	<% if @wines.empty? %>
+		<p><em>No wines to display.</em></p>
+	<% else %>
+		<% @wines.each do |w| %>
+			<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region %>, <% if w.add_region != nil && w.add_region != '' %><%= w.add_region %>, <% end %><%= w.country %> 
+			<!--
+				<div class="actions">
+					<%= link_to 'Edit', edit_wine_path(w, :status => params[:status]) %> <% if w.stored == true %><%= link_to 'Drink!', drink_wine_path(w), data: { confirm: 'Are you sure?' } %><% end %>
+				</div>
+			-->
+			<br>
+		<% end %>
 	<% end %>
-<% end %>
-</div>
-
-<br>
-
-	<div class="button">
-		<%= link_to 'Home', home_path %>
 	</div>
 
-	<div class="spacer"></div>
-	
-	<% if params[:status] == "cellared" %>
+	<br>
+
+	<div class="wine_cellar_buttons_bottom">
 		<div class="button">
-			<%= link_to 'Wine Catalog', wines_path(:status => "cataloged") %>
+			<%= link_to 'Home', home_path %>
 		</div>
-	<% else %>
+
+		<div class="spacer"></div>
+		
 		<div class="button">
-			<%= link_to 'Wine Cellar', wines_path(:status => "cellared") %>
+			<%= link_to 'Add Wine', new_wine_path %>
 		</div>
-	<% end %>
-	
-	<div class="spacer"></div>
-	
-	<div class="button">
-		<%= link_to 'New Wine', new_wine_path %>
 	</div>
 </section>

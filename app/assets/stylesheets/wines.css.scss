@@ -20,21 +20,10 @@ STYLES
 	}
 }
 
-#wine_info_form {
-	width: 310px;
-	margin: 0 auto 0 auto;
-	text-align: left;
-	table {
-	}
-	td {
-		vertical-align: top;
-	}
-}
-
 .show_wine_section {
 	display: inline-block;
 	text-align: left;
-	height: 350px;
+	height: 380px;
 	//border: 1px solid $logo_color;
 	padding: 5px;
 	width: 42%;
@@ -50,32 +39,11 @@ STYLES
 	margin-right: 4%;
 }
 
-#sub_region_field {
-	display: none;
-}
-
 #wine_list {
 	text-align: left;
-	width: 40%;
+	width: 55%;
 	margin: 20px auto 0 auto;
 	font-size: 1.2em;
-	table {
-		margin-left: auto;
-		margin-right: auto;
-		text-align: left;
-		width: 75%;
-		border-spacing: 0px;
-		border: 2px solid #a1a1a1;
-	
-	}
-	th {
-		padding-right: 10px;
-		border-bottom: 1px solid #a1a1a1;
-		text-align: left;
-		background-color: #cccccc;
-		margin: 0px;
-		padding-top: 3px;
-	}
 }
 
 .actions {
@@ -115,4 +83,48 @@ STYLES
 
 .wine_cellar_buttons_bottom {
 	margin: 30px 0 0 0;
+}
+
+#wine_info_form {
+	width: 90%;
+	margin: 0 auto;
+	text-align: left;
+	height: 440px;
+	td:nth-child(1) {
+		vertical-align: top;
+		text-align: right;
+		padding-right: 10px;
+	}
+}
+
+#wine_form_cellar_info {
+	width: 35%;
+	display: inline-block;
+	text-align: left;
+	height: 420px;
+	padding: 5px;
+	margin: 0 0 0 80px;
+	float: left;
+}
+
+#wine_form_catalog_info {
+	text-align: left;
+	height: 420px;
+	padding: 5px;
+	width: 46%;
+	margin: 0 40px 0 0;
+	float: right;
+}
+
+#add_region_link {
+	@extend .wine_cellar_button;
+	margin: 3px 3px;
+}
+
+.big_field_label {
+	vertical-align: top;
+}
+
+.hidden_form_field {
+	display: none;
 }

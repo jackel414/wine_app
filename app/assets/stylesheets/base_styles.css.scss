@@ -85,6 +85,13 @@ a {
 	}
 }
 
+#centered_row {
+	text-align: center;
+	div {
+		text-align: center;
+	}
+}
+
 .tagline {
 	font-family: $base_font;
 	margin: 15px 0 0 5px;
@@ -141,9 +148,7 @@ div {
 }
 
 .field_with_errors {
-  padding: 1px;
   background-color: red;
-  display: table;
 }
 
 #error_explanation {

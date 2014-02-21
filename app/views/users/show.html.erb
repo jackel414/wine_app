@@ -4,7 +4,7 @@
 	<h2>Welcome to Wino Log, <%= @user.first_name %>.</h2><br />
 	
 	<% if session[:user_id] == nil %>
-		<h3><%= notice %>  <%= link_to 'Log in', log_in_path %> to begin logging your wines!</h3>
+		<h3><%= notice %>  <%= link_to 'Log in', root_path %> to begin logging your wines!</h3>
 	<% else %>
 		<h3>Welcome to your user profile page.  <%= link_to 'Click here', edit_user_path %> to edit your information</h3>
 		<p>Email address: <%= @user.email %></p>

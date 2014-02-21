@@ -8,11 +8,6 @@
 			<p><em>Wine Details:</em></p>
 			
 			<p>
-			  <strong>Grape(s):</strong>
-			  <%= @wine.grapes %>
-			</p>
-
-			<p>
 			  <strong>Region:</strong>
 			  <%= @wine.region %><% if @wine.add_region != nil && @wine.add_region != '' %>, <%= @wine.add_region %><% end %>
 			</p>
@@ -20,6 +15,11 @@
 			<p>
 			  <strong>Country:</strong>
 			  <%= @wine.country %>
+			</p>
+
+			<p>
+			  <strong>Grape(s):</strong>
+			  <%= @wine.grapes %>
 			</p>
 
 			<p>
@@ -42,8 +42,12 @@
 			</p>
 
 			<p>
-				<strong>Winery:</strong>
-				<%= number_to_currency @wine.price %>
+				<strong>Price:</strong>
+				<% if @wine.price == 0 || '' %>
+					N/A
+				<% else %>
+					<%= number_to_currency @wine.price %>
+				<% end %>
 			</p>
 
 			<p>
@@ -55,6 +59,12 @@
 				<strong>Purchase Date:</strong>
 				<%= @wine.purchase_date %>
 			</p>
+			
+			<p>
+				<strong>ABV:</strong>
+				<%= @wine.abv %>%
+			</p>
+				
 		</div>
 		
 		<div id="cataloged_details" class="show_wine_section">
@@ -67,16 +77,13 @@
 				</p>
 
 				<p>
-					<strong>ABV:</strong>
-					<%= @wine.abv %>%
+					<strong>Meal:</strong>
+						<% if @wine.with_meal == true %>
+							<%= @wine.meal %>
+						<% else %>
+							N/A
+						<% end %>
 				</p>
-				
-				<% if @wine.with_meal == true %>
-					<p>
-						<strong>Meal:</strong>
-						<%= @wine.meal %>
-					</p>
-				<% end %>
 				
 				<p>
 					<strong>Rating:</strong>

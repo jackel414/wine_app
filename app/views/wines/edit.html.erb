@@ -14,8 +14,10 @@
 	<div class="button">
 		<% if params[:status] == "cellared" %>
 			<%= link_to 'Back', wines_path(:status => "cellared") %>
-		<% else %>
+		<% elsif params[:status] == "cataloged" %>
 			<%= link_to 'Back', wines_path(:status => "cataloged") %>
+		<% else %>
+			<%= link_to 'Back', wines_path %>
 		<% end %>
 	</div>
 

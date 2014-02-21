@@ -1,5 +1,18 @@
 $(document).ready(function() {
-	checkCellar;
+	if ($("#in_cellar_link").is(":checked")) {
+		$("#in_cellar_field").show();
+	}
+	
+	if ($("#catalog_link").is(":checked")) {
+		console.log("catalog");
+		$("#wine_form_catalog_info").show();
+	}
+	
+	if ($("#add_region_field").val() != '') {
+		console.log("yes");
+		$("#add_region_field").show();
+		$("#add_region_link").hide();
+	}
 	
 	$("#add_region_link").on("click", function(event) {
 		event.preventDefault();
@@ -7,10 +20,8 @@ $(document).ready(function() {
 		$("#add_region_field").slideToggle(0);
 	});
 	
-	//add checkbox trigger here
-	
 	$("#in_cellar_link").on("click", function(event) {
-		$("#in_cellar_field").slideToggle(200);
+		$("#in_cellar_field").slideToggle(0);
 	});
 	
 	$("#catalog_link").on("click", function(event) {
@@ -24,13 +35,3 @@ $(document).ready(function() {
 		$("#login_form").slideToggle(100);
 	});	
 });
-
-var checkCellar;
-checkCellar = function() {
-	var cellarCheckbox = $("#in_cellar_link");
-	var bottlesField = $("#in_cellar_field");
-	
-	if (cellarCheckbox.is(":checked")) {
-	bottlesField.show();
-	};
-}

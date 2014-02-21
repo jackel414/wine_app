@@ -24,7 +24,7 @@
 
 			<p>
 				<strong>Bottles in Cellar:</strong>
-				<% if @wine.stored == false || @wine.num_bottles == 0 %>
+				<% if (@wine.stored == false) || (@wine.num_bottles == 0) %>
 					None
 				<% else %>
 					<%= @wine.num_bottles %>
@@ -43,7 +43,7 @@
 
 			<p>
 				<strong>Price:</strong>
-				<% if @wine.price == 0 || '' %>
+				<% if @wine.price == ( 0 || '' ) %>
 					N/A
 				<% else %>
 					<%= number_to_currency @wine.price %>

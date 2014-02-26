@@ -45,7 +45,7 @@
 		<p><em>No wines to display.</em></p>
 	<% else %>
 		<% @wines.each do |w| %>
-			<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region %>, <% if w.add_region != nil && w.add_region != '' %><%= w.add_region %>, <% end %><%= w.country %> 
+			<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region %>, <% if w.add_region != nil && w.add_region != '' %><%= w.add_region %>, <% end %><% if w.add_region != nil && w.add_region != '' %><%= w.add_region_2 %>, <% end %><%= w.country %> 
 			<!--
 				<div class="actions">
 					<%= link_to 'Edit', edit_wine_path(w, :status => params[:status]) %> <% if w.stored == true %><%= link_to 'Drink!', drink_wine_path(w), data: { confirm: 'Are you sure?' } %><% end %>

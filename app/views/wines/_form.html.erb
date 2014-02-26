@@ -61,6 +61,19 @@
 		<tr>
 			<td>
 				<div class="field">
+					<%= f.label :add_region_2, 'Region' %>:
+				</div>
+			</td>
+			<td>
+				<%= f.text_field :add_region_2, :class => 'hidden_form_field', :id => 'add_region_field_2' %>
+				<div id="add_region_link_2">
+					<a href="#">add additional-region</a>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
 					<%= f.label :country %>:
 				</div>
 			</td>
@@ -182,7 +195,7 @@
 				<%= f.select :with_meal, [['', nil], ['Yes', true], ['No', false]] %>
 			</td>
 		</tr>
-		<tr>
+		<tr class="hidden_form_field" id="with_meal_field">
 			<td>
 				<div class="field">
 					<%= f.label :meal %>:

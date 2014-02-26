@@ -89,7 +89,7 @@ STYLES
 	width: 90%;
 	margin: 0 auto;
 	text-align: left;
-	height: 440px;
+	height: 460px;
 	td:nth-child(1) {
 		vertical-align: top;
 		text-align: right;
@@ -101,7 +101,7 @@ STYLES
 	width: 35%;
 	display: inline-block;
 	text-align: left;
-	height: 420px;
+	height: 440px;
 	padding: 5px;
 	margin: 0 0 0 80px;
 	float: left;
@@ -109,7 +109,7 @@ STYLES
 
 #wine_form_catalog_info {
 	text-align: left;
-	height: 420px;
+	height: 440px;
 	padding: 5px;
 	width: 46%;
 	margin: 0 40px 0 0;
@@ -117,6 +117,11 @@ STYLES
 }
 
 #add_region_link {
+	@extend .wine_cellar_button;
+	margin: 3px 3px;
+}
+
+#add_region_link_2 {
 	@extend .wine_cellar_button;
 	margin: 3px 3px;
 }

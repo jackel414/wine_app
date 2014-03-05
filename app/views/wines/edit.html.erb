@@ -1,23 +1,23 @@
 <section>
-	<h1>Edit wine</h1>
+	<h1>Edit Wine</h1>
 	
 	<br>
 
 	<%= render 'form' %>
 
 	<div class="button">
-		<%= link_to 'Show', @wine %>
+		<%= link_to 'Back', @wine %>
 	</div>
 
 	<div class="spacer"></div>
 
 	<div class="button">
 		<% if params[:status] == "cellared" %>
-			<%= link_to 'Back', wines_path(:status => "cellared") %>
+			<%= link_to 'Wines', wines_path(:status => "cellared") %>
 		<% elsif params[:status] == "cataloged" %>
-			<%= link_to 'Back', wines_path(:status => "cataloged") %>
+			<%= link_to 'Wines', wines_path(:status => "cataloged") %>
 		<% else %>
-			<%= link_to 'Back', wines_path %>
+			<%= link_to 'Wines', wines_path %>
 		<% end %>
 	</div>
 

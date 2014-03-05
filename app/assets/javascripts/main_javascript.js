@@ -8,12 +8,12 @@ $(document).ready(function() {
 	}
 	
 	if ($("#add_region_field").val() != '') {
-		$(this).show();
+		$("#add_region_field").show();
 		$("#add_region_link").hide();
 	}
 	
 	if ($("#add_region_field_2").val() != '') {
-		$(this).show();
+		$("#add_region_field_2").show();
 		$("#add_region_link_2").hide();
 	}
 	

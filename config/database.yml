@@ -3,8 +3,8 @@ development:
   database: wine_app_development
   pool: 5
   timeout: 5000
-  username: postgres
-  password: 12nmfb99
+  username: zackmays
+  password: gorham99
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -14,13 +14,13 @@ test:
   database: wine_app_test
   pool: 5
   timeout: 5000
-  username: postgres
-  password: 12nmfb99
+  username: zackmays
+  password: gorham99
   
 production:
   adapter: postgresql
   database: wine_app_production
   pool: 5
   timeout: 5000
-  username: postgres
-  password: 12nmfb99
+  username: zackmays
+  password: gorham99

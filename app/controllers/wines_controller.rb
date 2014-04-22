@@ -1,5 +1,5 @@
 class WinesController < ApplicationController
-  before_action :set_wine, only: [:show, :edit, :drink, :update, :destroy]
+  before_action :set_wine, only: [:show, :edit, :drink, :update, :destroy, :catalog]
 
   # GET /wines
   # GET /wines.json
@@ -34,9 +34,29 @@ class WinesController < ApplicationController
   
   # GET /wines/drink/1
   def drink
-	@wine.update_attributes(:stored => false)
+	  @wine.update_attributes(:stored => false)
   end
 
+  # POST /wines/catalog/1
+  def catalog
+    current_bottles = @wine.num_bottles
+    bottles_left = nil
+    in_cellar = true
+    
+    if current_bottles == 0
+      bottles_left = 0
+    else
+      bottles_left = current_bottles - 1
+    end
+    
+    if bottles_left == 0
+      in_cellar = false
+    end
+    
+    @wine.update_attributes(:catalog => true, :num_bottles => bottles_left, :stored => in_cellar)
+    redirect_to edit_wine_path(@wine)
+  end
+  
   # POST /wines
   # POST /wines.json
   def create

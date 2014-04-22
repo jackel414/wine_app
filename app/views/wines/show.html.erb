@@ -33,36 +33,56 @@
 			
 			<p>
 				<strong>Winery:</strong>
-				<%= @wine.winery %>
+				<% if @wine.winery? %>
+          <%= @wine.winery %>
+        <% else %>
+          N/A
+        <% end %>
 			</p>
 			
 			<p>
 				<strong>Vintage:</strong>
-				<%= @wine.vintage %>
+				<% if @wine.vintage != (nil or '') %>
+          <%= @wine.vintage %>
+        <% else %>
+          N/A
+        <% end %>
 			</p>
 
 			<p>
 				<strong>Price:</strong>
-				<% if @wine.price == ( 0 || '' ) %>
-					N/A
-				<% else %>
+				<% if @wine.price? %>
 					<%= number_to_currency @wine.price %>
+				<% else %>
+					N/A
 				<% end %>
 			</p>
 
 			<p>
 				<strong>Location Purchased:</strong>
-				<%= @wine.location %>
+        <% if @wine.location != (nil || '')%>
+				  <%= @wine.location %>
+        <% else %>
+          N/A
+        <% end %>
 			</p>
 
 			<p>
 				<strong>Purchase Date:</strong>
-				<%= @wine.purchase_date %>
+        <% if @wine.purchase_date != (nil || '')%>
+				  <%= @wine.purchase_date %>
+        <% else %>
+          N/A
+        <% end %>
 			</p>
 			
 			<p>
 				<strong>ABV:</strong>
-				<%= @wine.abv %>%
+        <% if @wine.abv? %>
+          <%= @wine.abv %>%
+        <% else %>
+          N/A
+        <% end %>
 			</p>
 				
 		</div>
@@ -73,13 +93,21 @@
 			<% if @wine.catalog == true %>
 				<p>
 					<strong>Drink Date:</strong>
-					<%= @wine.drink_date %>
+  				<% if @wine.drink_date? %>
+					  <%= @wine.drink_date %>
+  				<% else %>
+  					N/A
+  				<% end %>
 				</p>
 
 				<p>
 					<strong>Meal:</strong>
 						<% if @wine.with_meal == true %>
-							<%= @wine.meal %>
+      				<% if @wine.meal? %>
+  							<%= @wine.meal %>
+      				<% else %>
+      					N/A
+      				<% end %>
 						<% else %>
 							N/A
 						<% end %>
@@ -87,16 +115,24 @@
 				
 				<p>
 					<strong>Rating:</strong>
-					<%= @wine.rating %>
+  				<% if @wine.rating? %>
+					  <%= @wine.rating %>
+  				<% else %>
+  					N/A
+  				<% end %>
 				</p>
 
 				<p>
 					<strong>Notes:</strong>
-					<%= @wine.notes %>
+  				<% if @wine.notes? %>
+					  <%= @wine.notes %>
+  				<% else %>
+  					N/A
+  				<% end %>
 				</p>
 			<% else %>
 				<p>
-					Wine has not been added to your catalog.  <strong><%= link_to 'Click here', edit_wine_path(@wine) %></strong> to add it now.
+					Wine has not been added to your catalog.  <strong><%= link_to 'Click here', catalog_wine_path(@wine), method: :put %></strong> to add it now.
 				</p>
 			<% end %>
 		</div>

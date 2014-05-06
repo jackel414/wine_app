@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   
   #GET /users/new
   def new
-	@user = User.new
+	  @user = User.new
   end
 
   def show
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
   
   def user_list
-	@users = User.all
+	  @users = User.all
   end
   
   def create

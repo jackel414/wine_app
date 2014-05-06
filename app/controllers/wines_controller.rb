@@ -1,6 +1,9 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :drink, :update, :destroy, :catalog]
 
+  def error
+  end
+  
   # GET /wines
   # GET /wines.json
   def index
@@ -53,7 +56,7 @@ class WinesController < ApplicationController
       in_cellar = false
     end
     
-    @wine.update_attributes(:catalog => true, :num_bottles => bottles_left, :stored => in_cellar)
+    @wine.update(:catalog => true, :num_bottles => bottles_left, :stored => in_cellar)
     redirect_to edit_wine_path(@wine)
   end
   
@@ -61,7 +64,7 @@ class WinesController < ApplicationController
   # POST /wines.json
   def create
     @wine = Wine.new(wine_params)
-	@wine.user_id = current_user.id
+	  @wine.user_id = current_user.id
 
     respond_to do |format|
       if @wine.save
@@ -79,10 +82,16 @@ class WinesController < ApplicationController
   def update
     respond_to do |format|
       if @wine.update(wine_params)
+        if @wine.num_bottles == 0
+          @wine.update(:stored => false)
+        elsif @wine.stored == false
+          @wine.update(:num_bottles => 0)
+        end
+                
         format.html { redirect_to @wine, notice: 'Wine was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'error', notice: 'Wine wasn\'t saved.' }
         format.json { render json: @wine.errors, status: :unprocessable_entity }
       end
     end

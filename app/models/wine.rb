@@ -5,5 +5,5 @@ class Wine < ActiveRecord::Base
   validates_presence_of :name, :grapes, :region, :country, :wine_type, :on => :update
   
   scope :cellared, where(stored: true)
-  scope :cataloged, where(stored: false)
+  scope :cataloged, where(stored: false)  
 end

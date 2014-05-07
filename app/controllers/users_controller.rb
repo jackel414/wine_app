@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :check_admin, only: [:user_list, :index]
   skip_before_action :require_login, only: [:new, :create, :show]
   
   # GET /users
@@ -51,12 +52,23 @@ class UsersController < ApplicationController
   end
   
   private
-    def set_user
+  def set_user
 	  @user = User.find(params[:id])
+    if @user.id != session[:user_id]
+      if session[:user_role] != "Admin"
+        redirect_to home_path
+      end
+    end
 	end
 	
 	def user_params
-	  params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation)
+	  params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation, :role)
 	end
-    
+  
+  def check_admin
+    if session[:user_role] != "Admin"
+      redirect_to home_path
+    end
+  end
+  
 end

@@ -5,24 +5,26 @@ class SessionsController < ApplicationController
   end
   
   def welcome
-	if session[:user_id] != nil
-	  redirect_to home_path
-	end
+  	if session[:user_id] != nil
+  	  redirect_to home_path
+  	end
   end
   
   def create
-	user = User.authenticate(params[:username], params[:password])
-	if user
-	  session[:user_id] = user.id
-	  redirect_to home_path
-	else
-	  flash.now.alert = "invalid username/password"
-	  render "new"
-	end
+  	user = User.authenticate(params[:username], params[:password])
+  	if user
+  	  session[:user_id] = user.id
+      session[:user_role] = user.role
+  	  redirect_to home_path
+  	else
+  	  flash.now.alert = "invalid username/password"
+  	  render "new"
+  	end
   end
 	
   def destroy
-	session[:user_id] = nil
-	redirect_to root_url, :notice => "you've been logged out"
+  	session[:user_id] = nil
+  	redirect_to root_url, :notice => "you've been logged out"
   end
+  
 end

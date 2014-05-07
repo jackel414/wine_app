@@ -37,7 +37,7 @@ class WinesController < ApplicationController
   
   # GET /wines/drink/1
   def drink
-	  @wine.update_attributes(:stored => false)
+	  @wine.update(:stored => false)
   end
 
   # POST /wines/catalog/1

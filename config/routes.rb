@@ -6,6 +6,7 @@ WineApp::Application.routes.draw do
   get "wines" => "wines#cellar"
   put "/wines/:id/drink" => "wines#drink", as: :drink_wine
   put "/wines/:id/catalog" => "wines#catalog", :as => "catalog_wine"
+  post "/users/:id/deactivate" => "users#deactivate", :as => "deactivate_user"
   resources :wines
   resources :users
   resources :sessions

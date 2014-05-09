@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :deactivate, :destroy]
   before_action :check_admin, only: [:user_list, :index]
   skip_before_action :require_login, only: [:new, :create, :show]
   
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.active
   end
   
   #GET /users/new
@@ -19,11 +19,7 @@ class UsersController < ApplicationController
   
   def edit
   end
-  
-  def user_list
-	  @users = User.all
-  end
-  
+    
   def create
     @user = User.new(user_params)
 
@@ -48,6 +44,22 @@ class UsersController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+  
+  def deactivate
+	  @user.update(:active => false)
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
+  
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
     end
   end
   

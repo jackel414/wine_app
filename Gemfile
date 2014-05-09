@@ -51,4 +51,7 @@ end
 
 gem 'rails_12factor', group: :production
 
+#replace WEBrick as default server
+gem 'thin'
+
 ruby "1.9.3"

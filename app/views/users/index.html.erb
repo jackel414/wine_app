@@ -1,7 +1,6 @@
 <section>
-
-<% @users.each do |user| %>
-	<%= user.first_name %> <%= user.last_name %><br>
-<% end %>
-
+  <h2>Active Users</h1>
+  <% @users.each do |user| %>
+  	<%= link_to user.first_name + ' ' + user.last_name, user_path(user.id) %>: <%= user.role %> - <%= link_to 'Deactivate', deactivate_user_path(user.id), :method => :post, data: {confirm: 'Are you sure you want to deactivate this user?'} %><br>
+  <% end %>
 </section>

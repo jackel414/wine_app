@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :deactivate, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :deactivate, :activate, :destroy]
   before_action :check_admin, only: [:user_list, :index]
-  skip_before_action :require_login, only: [:new, :create, :show]
+  skip_before_action :require_login, only: [:new, :create, :show, :inactive]
   
   # GET /users
   # GET /users.json
   def index
-    @users = User.active
+    @users = User.all.order('first_name asc')
   end
   
   #GET /users/new
@@ -18,6 +18,9 @@ class UsersController < ApplicationController
   end
   
   def edit
+  end
+  
+  def inactive
   end
     
   def create
@@ -49,6 +52,14 @@ class UsersController < ApplicationController
   
   def deactivate
 	  @user.update(:active => false)
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
+  
+  def activate
+	  @user.update(:active => true)
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }

@@ -2,14 +2,15 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
   
-  has_many :wine, dependent: :destroy
+  has_many :wines, dependent: :destroy
   
   validates_presence_of :password, :email, :first_name, :last_name, :username, :on => :create
   validates_presence_of :email, :first_name, :last_name, :username, :on => :update
   validates_confirmation_of :password
   validates_uniqueness_of :email, :username
   
-  scope :active, where(active: true)
+  #Scope not currently in use as it caches
+  #scope :active, where(active: true)
   
   def self.authenticate(username, password)
     user = find_by_username(username)

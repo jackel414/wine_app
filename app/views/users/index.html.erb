@@ -1,6 +1,19 @@
-<section>
-  <h2>Active Users</h1>
-  <% @users.each do |user| %>
-  	<%= link_to user.first_name + ' ' + user.last_name, user_path(user.id) %>: <%= user.role %> - <%= link_to 'Deactivate', deactivate_user_path(user.id), :method => :post, data: {confirm: 'Are you sure you want to deactivate this user?'} %><br>
-  <% end %>
-</section>
+<h1>Users</h1>
+<table class="user_list_table">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Account Type</th>
+      <th>Status</th>
+      <th>Wines Logged</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+	    <td><%= link_to user.first_name + ' ' + user.last_name, user_path(user.id) %></td>
+      <td><%= user.role %></td>
+      <td class="user_status_link"><% if user.active? %><%= link_to 'Active', deactivate_user_path(user.id), :method => :post, data: {confirm: 'Are you sure you want to deactivate this user?'} %><% else %><%= link_to 'Inactive', activate_user_path(user.id), :method => :post, data: {confirm: 'Are you sure you want to activate this user?'} %><% end %></td>
+      <td><%= user.wines.count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

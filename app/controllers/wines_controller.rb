@@ -56,7 +56,7 @@ class WinesController < ApplicationController
       in_cellar = false
     end
     
-    @wine.update(:catalog => true, :num_bottles => bottles_left, :stored => in_cellar)
+    @wine.update(:catalog => true, :num_bottles => bottles_left, :stored => in_cellar, :catalog_date => Time.now)
     redirect_to edit_wine_path(@wine)
   end
   
@@ -65,6 +65,9 @@ class WinesController < ApplicationController
   def create
     @wine = Wine.new(wine_params)
 	  @wine.user_id = current_user.id
+    if @wine.catalog == true
+      @wine.cataloged_date = Time.now
+    end
 
     respond_to do |format|
       if @wine.save
@@ -115,6 +118,6 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :grapes, :region, :country, :stored, :add_region, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv, :user_id, :add_region_2)
+      params.require(:wine).permit(:name, :grapes, :region, :country, :stored, :add_region, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv, :user_id, :add_region_2, :catalog_date)
     end
 end

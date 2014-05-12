@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509122802) do
+ActiveRecord::Schema.define(version: 20140512224619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140509122802) do
     t.float    "abv"
     t.integer  "user_id"
     t.string   "add_region_2"
+    t.datetime "catalog_date"
   end
 
 end

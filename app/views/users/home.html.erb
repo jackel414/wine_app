@@ -1,0 +1,12 @@
+<h2>Recent Activity</h2>
+<ul>
+  <% @recent_wines.each do |wine| %>
+  <li>
+    <% if wine.catalog == true %>
+      <%= wine.name %> cataloged <%= wine.catalog_date.time_ago_in_words %>
+    <% else %>
+      <%= wine.name %> added <%= wine.created_at.distance_of_time_in_words %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>

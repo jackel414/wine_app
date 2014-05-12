@@ -13,6 +13,11 @@ class UsersController < ApplicationController
   def new
 	  @user = User.new
   end
+  
+  def home
+    @user = User.find(session[:user_id])
+    @recent_wines = @user.wines
+  end
 
   def show
   end

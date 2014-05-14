@@ -1,0 +1,64 @@
+<%= form_for(@region) do |f| %>
+	<% if @region.errors.any? %>
+		<div id="error_explanation">
+			<h2>Please fix the below errors before continuing:</h2>
+			<ul>
+				<% @region.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+	<table>
+	<tbody>
+		<tr>
+			<td>
+				<div class="field">
+					Country:
+				</div>
+			</td>
+			<td>
+				<%= f.text_field :country %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
+					Region 1:
+				</div>
+			</td>
+			<td>
+				<%= f.text_field :region_1 %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
+					Region 2:
+				</div>
+			</td>
+			<td>
+				<%= f.text_field :region_2 %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
+					Region 3:
+				</div>
+			</td>
+			<td>
+				<%= f.text_field :region_3 %>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" id="centered_row">
+				<div class="actions">
+					<%= f.submit 'Submit' %>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+<% end %>

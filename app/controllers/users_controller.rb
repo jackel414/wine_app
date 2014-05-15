@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :deactivate, :activate, :destroy]
-  before_action :check_admin, only: [:user_list, :index]
+  before_action :check_admin, only: [:user_list, :index, :admin]
   skip_before_action :require_login, only: [:new, :create, :show, :inactive]
   
   # GET /users
@@ -23,6 +23,9 @@ class UsersController < ApplicationController
   end
   
   def edit
+  end
+  
+  def admin
   end
   
   def inactive

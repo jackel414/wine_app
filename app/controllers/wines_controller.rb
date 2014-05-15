@@ -35,11 +35,6 @@ class WinesController < ApplicationController
   def edit
   end
   
-  # GET /wines/drink/1
-  def drink
-	  @wine.update(:stored => false)
-  end
-
   # POST /wines/catalog/1
   def catalog
     current_bottles = @wine.num_bottles

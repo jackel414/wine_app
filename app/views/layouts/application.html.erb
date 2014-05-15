@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
+    <meta name='viewport' content='width=device-width'>
   </head>
   <body>
     <header>
@@ -12,7 +13,7 @@
     	<h3 class="tagline">Keeping track of your wines, since you can't...</h3>
     	<div id="user_info">
     		<% if current_user %>
-    			<%= link_to current_user.first_name, user_path(current_user.id) %> | <% if current_user.role == "Admin" %> <%= link_to 'Users', users_path %> | <% end %><%= link_to 'Wines', wines_path %> | <%= link_to 'Sign Out', log_out_path %>
+    			<%= link_to current_user.first_name, user_path(current_user.id) %> | <% if current_user.role == "Admin" %> <%= link_to 'Admin', admin_path %> | <% end %><%= link_to 'Wines', wines_path %> | <%= link_to 'Sign Out', log_out_path %>
     		<% end %>
     	</div>
     </header>

@@ -6,7 +6,7 @@ WineApp::Application.routes.draw do
   get 'home' => 'users#home'
   get "wines" => "wines#cellar"
   get "inactive" => "users#inactive"
-  put "/wines/:id/drink" => "wines#drink", as: :drink_wine
+  get 'admin' => 'users#admin'
   put "/wines/:id/catalog" => "wines#catalog", :as => "catalog_wine"
   post "/users/:id/deactivate" => "users#deactivate", :as => "deactivate_user"
   post "/users/:id/activate" => "users#activate", :as => "activate_user"

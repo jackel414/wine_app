@@ -42,7 +42,7 @@
 				</div>
 			</td>
 			<td>
-				<%= f.text_field :region %>
+        <%= f.collection_select(:region, Region.select('DISTINCT country'), :country, :country, {include_blank: ''}) %>
 			</td>
 		</tr>
 		<tr>

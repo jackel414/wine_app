@@ -45,10 +45,8 @@ $(document).ready(function() {
 		value = $(this).val();
 		if (value == 'true') {
 			$("#with_meal_field").show();
-			console.log(value);
 		} else {
 			$("#with_meal_field").hide();
-			console.log(value);
 		}
 	});
 
@@ -57,5 +55,15 @@ $(document).ready(function() {
 	$("#login_button").on("click", function(event) {
 		event.preventDefault();
 		$("#login_form").slideToggle(100);
-	});	
+	});
+  
+  $('#country_select').on('change', function() {
+    var value = $(this).val();
+    if (value == 'Other') {
+      $('#country_other_text').show();
+    } else {
+      $('#country_other_text').hide();
+    }
+  });
+  
 });

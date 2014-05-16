@@ -63,6 +63,10 @@ class WinesController < ApplicationController
     if @wine.catalog == true
       @wine.cataloged_date = Time.now
     end
+    
+    if @wine.country == 'Other'
+      @wine.country = @wine.country_other
+    end
 
     respond_to do |format|
       if @wine.save
@@ -113,6 +117,6 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :grapes, :region, :country, :stored, :add_region, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv, :user_id, :add_region_2, :catalog_date)
+      params.require(:wine).permit(:name, :grapes, :region, :country, :stored, :add_region, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv, :user_id, :add_region_2, :catalog_date, :country_other)
     end
 end

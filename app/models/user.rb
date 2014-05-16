@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :username
   
   #Scope not currently in use as it caches
-  #scope :active, where(active: true)
+  #scope :active, ->{ where(active: true) }
   
   def self.authenticate(username, password)
     user = find_by_username(username)

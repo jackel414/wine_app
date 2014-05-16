@@ -25,7 +25,8 @@
 				<%= f.text_field :name %>
 			</td>
 		</tr>
-		<tr>
+		
+    <tr>
 			<td>
 				<div class="field">
 					<%= f.label :grapes %>:
@@ -35,6 +36,29 @@
 				<%= f.text_field :grapes %>
 			</td>
 		</tr>
+		
+    <tr>
+			<td>
+				<div class="field">
+					<%= f.label :country %>:
+				</div>
+			</td>
+			<td>
+        <%= f.select(:country, Region.uniq.pluck(:country) {|r| [r.country] } + ['Other'], {include_blank: ''}, {:id => 'country_select'})%>
+			</td>
+		</tr>
+		
+    <tr class="hidden_form_field" id="country_other_text">
+			<td>
+				<div class="field">
+					<%= f.label :country_other, 'Country - Other' %>:
+				</div>
+			</td>
+			<td>
+        <%= f.text_field :country_other %>
+			</td>
+		</tr>
+		
 		<tr>
 			<td>
 				<div class="field">
@@ -42,10 +66,11 @@
 				</div>
 			</td>
 			<td>
-        <%= f.collection_select(:region, Region.select('DISTINCT country'), :country, :country, {include_blank: ''}) %>
+				<%= f.text_field :region %>
 			</td>
 		</tr>
-		<tr>
+    
+    <tr>
 			<td>
 				<div class="field">
 					<%= f.label :add_region, 'Region' %>:
@@ -58,7 +83,8 @@
 				</div>
 			</td>
 		</tr>
-		<tr>
+		
+    <tr>
 			<td>
 				<div class="field">
 					<%= f.label :add_region_2, 'Region' %>:
@@ -71,17 +97,8 @@
 				</div>
 			</td>
 		</tr>
-		<tr>
-			<td>
-				<div class="field">
-					<%= f.label :country %>:
-				</div>
-			</td>
-			<td>
-				<%= f.text_field :country %>
-			</td>
-		</tr>
-		<tr>
+		
+    <tr>
 			<td>
 				<div class="field">
 					<%= f.label :winery %>:
@@ -91,7 +108,8 @@
 				<%= f.text_field :winery %>
 			</td>
 		</tr>
-		<tr>
+		
+    <tr>
 			<td>
 				<div class="field">
 					<%= f.label :vintage %>:
@@ -101,7 +119,8 @@
 				<%= f.text_field :vintage %>
 			</td>
 		</tr>
-		<tr>
+		
+    <tr>
 			<td>
 				<div class="field">
 					<%= f.label :location %>:
@@ -111,7 +130,8 @@
 				<%= f.text_field :location %>
 			</td>
 		</tr>
-		<tr>
+		
+    <tr>
 			<td>
 				<div class="field">
 					<%= f.label :wine_type %>:
@@ -121,7 +141,8 @@
 				<%= f.select :wine_type, ['', 'Red', 'White', 'Sparkling', 'Port', 'Other'] %>
 			</td>
 		</tr>
-		<tr>
+		
+    <tr>
 			<td>
 				<div class="field">
 					<%= f.label :price %>:
@@ -131,7 +152,8 @@
 				<%= f.text_field :price %>
 			</td>
 		</tr>
-		<tr>
+		
+    <tr>
 			<td>
 				<div class="field">
 					<%= f.label :purchase_date %>:
@@ -141,7 +163,8 @@
 				<%= f.text_field :purchase_date, :class => 'date_picker' %>
 			</td>
 		</tr>
-		<tr>
+		
+    <tr>
 			<td>
 				<div class="field">
 					<%= f.label :abv, 'ABV' %>:
@@ -151,14 +174,16 @@
 				<%= f.text_field :abv %>
 			</td>
 		</tr>
-		<tr>
+		
+    <tr>
 			<td colspan="2" id="centered_row">
 				<div class="field">
 					<%= f.label :stored, 'In Cellar?' %> <%= f.check_box :stored, :id => 'in_cellar_link' %> &nbsp;&nbsp;&nbsp; <%= f.label :catalog, 'Catalog?' %> <%= f.check_box :catalog, :id => 'catalog_link' %>
 				</div>
 			</td>
 		</tr> 
-		<tr class="hidden_form_field" id="in_cellar_field">
+		
+    <tr class="hidden_form_field" id="in_cellar_field">
 			<td>
 				<div class="field">
 					<%= f.label :num_bottles %>:

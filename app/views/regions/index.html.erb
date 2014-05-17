@@ -1,7 +1,7 @@
 <h1>Regions</h1>
 <ul>
   <% @regions.each do |region| %>
-  <li><%= region.region_3 != '' ? region.region_3 + ', ' : nil %><%= region.region_2 != '' ? region.region_2 + ', ' : nil %><%= region.region_1 %>, <%= region.country %> - <%= link_to 'Edit', edit_region_path(region.id) %></li>
+  <li><%= region.region_3 != '' ? region.region_3 + ', ' : nil %><%= region.region_2 != '' ? region.region_2 + ', ' : nil %><%= region.region_1 != '' ? region.region_1 + ', ' : nil %><%= region.country %> - <%= link_to 'Edit', edit_region_path(region.id) %></li>
   <% end %>
 </ul>
 

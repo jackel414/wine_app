@@ -66,4 +66,31 @@ $(document).ready(function() {
     }
   });
   
+  $('#general_region_select').on('change', function() {
+    var value = $(this).val();
+    if (value == 'Other') {
+      $('#general_region_other_text').show();
+    } else {
+      $('#general_region_other_text').hide();
+    }
+  });
+  
+  $('#specific_region_select').on('change', function() {
+    var value = $(this).val();
+    if (value == 'Other') {
+      $('#specific_region_other_text').show();
+    } else {
+      $('#specific_region_other_text').hide();
+    }
+  });
+  
+  $('#micro_region_select').on('change', function() {
+    var value = $(this).val();
+    if (value == 'Other') {
+      $('#micro_region_other_text').show();
+    } else {
+      $('#micro_region_other_text').hide();
+    }
+  });
+  
 });

@@ -67,6 +67,18 @@ class WinesController < ApplicationController
     if @wine.country == 'Other'
       @wine.country = @wine.country_other
     end
+    
+    if @wine.region == 'Other'
+      @wine.region = @wine.region_other
+    end
+    
+    if @wine.add_region == 'Other'
+      @wine.add_region = @wine.add_region_other
+    end
+    
+    if @wine.add_region_2 == 'Other'
+      @wine.add_region_2 = @wine.add_region_2_other
+    end
 
     respond_to do |format|
       if @wine.save

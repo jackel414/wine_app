@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   
   def home
     @user = User.find(session[:user_id])
-    @recent_wines = @user.wines
+    @recent_wines = @user.wines.order('updated_at desc').limit(5)
   end
 
   def show

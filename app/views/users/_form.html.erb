@@ -52,6 +52,7 @@
 				<%= f.text_field :username %>
 			</td>
 		</tr>
+    <% if session[:user_role] == "Admin" %>
 		<tr>
 			<td>
 				<div class="field">
@@ -62,6 +63,7 @@
 				<%= f.select :role, ['User', 'Admin'] %>
 			</td>
 		</tr>
+    <% end %>
 		<tr>
 			<td>
 				<div class="field">

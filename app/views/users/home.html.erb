@@ -3,7 +3,7 @@
   <% @recent_wines.each do |wine| %>
   <li>
     <% if wine.catalog == true %>
-      <%= wine.name %> (<%= wine.grapes %> from <%= wine.country == "USA" ? wine.region : wine.country %>) cataloged <%= time_ago_in_words(wine.catalog_date) %>
+      <%= wine.name %> (<%= wine.grapes %> from <%= wine.country == "USA" ? wine.general_region : wine.country %>) cataloged <%= time_ago_in_words(wine.catalog_date) %>
     <% else %>
       <%= wine.name %> added <%= time_ago_in_words(wine.created_at) %>
     <% end %>

@@ -58,6 +58,7 @@ class UsersController < ApplicationController
     end
   end
   
+  #this needs to be combined with below method using Toggle
   def deactivate
 	  @user.update(:active => false)
     respond_to do |format|

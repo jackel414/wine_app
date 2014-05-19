@@ -45,7 +45,7 @@
 		<p><em>No wines to display.</em></p>
 	<% else %>
 		<% @wines.each do |w| %>
-			<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region %>, <% if w.add_region != nil && w.add_region != '' %><%= w.add_region %>, <% end %><% if w.add_region_2 != nil && w.add_region_2 != '' %><%= w.add_region_2 %>, <% end %><%= w.country %> 
+			<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.general_region %>, <% if w.specific_region != nil && w.specific_region != '' %><%= w.specific_region %>, <% end %><% if w.micro_region != nil && w.micro_region != '' %><%= w.micro_region %>, <% end %><%= w.country %> 
 			<br>
 		<% end %>
 	<% end %>

@@ -48,7 +48,7 @@
 			</td>
 		</tr>
 		
-    <tr class="hidden_form_field" id="country_other_text">
+    <tr class="hidden_form_field" id="country_other_text" <%= @wine.country == 'Other' ? "style=display:table-row" : nil %> >
 			<td>
 				<div class="field">
 					<%= f.label :country_other, 'Country - Other' %>:
@@ -62,66 +62,66 @@
 		<tr>
 			<td>
 				<div class="field">
-					<%= f.label :region, 'General Region' %>:
+					<%= f.label :general_region, 'General Region' %>:
 				</div>
 			</td>
 			<td>
-        <%= f.select(:region, Region.uniq.where.not(region_1: '').order('region_1 asc').pluck(:region_1) {|r| [r.region_1] } + ['Other'], {include_blank: 'None'}, {:id => 'general_region_select'})%>
+        <%= f.select(:general_region, Region.uniq.where.not(general_region: '').order('general_region asc').pluck(:general_region) {|r| [r.general_region] } + ['Other'], {include_blank: 'None'}, {:id => 'general_region_select'})%>
 			</td>
 		</tr>
     
-    <tr class="hidden_form_field" id="general_region_other_text">
+    <tr class="hidden_form_field" id="general_region_other_text" <%= @wine.general_region == 'Other' ? "style=display:table-row" : nil %> >
 			<td>
 				<div class="field">
-					<%= f.label :region_other, 'General Region - Other' %>:
+					<%= f.label :general_region_other, 'General Region - Other' %>:
 				</div>
 			</td>
 			<td>
-        <%= f.text_field :region_other %>
+        <%= f.text_field :general_region_other %>
 			</td>
 		</tr>
 		
     <tr>
 			<td>
 				<div class="field">
-					<%= f.label :add_region, 'Specific Region' %>:
+					<%= f.label :specific_region, 'Specific Region' %>:
 				</div>
 			</td>
 			<td>
-        <%= f.select(:add_region, Region.uniq.where.not(region_2: '').order('region_2 asc').pluck(:region_2) {|r| [r.region_2] } + ['Other'], {include_blank: 'None'}, {:id => 'specific_region_select'})%>
+        <%= f.select(:specific_region, Region.uniq.where.not(specific_region: '').order('specific_region asc').pluck(:specific_region) {|r| [r.specific_region] } + ['Other'], {include_blank: 'None'}, {:id => 'specific_region_select'})%>
 			</td>
 		</tr>
 		
-    <tr class="hidden_form_field" id="specific_region_other_text">
+    <tr class="hidden_form_field" id="specific_region_other_text" <%= @wine.specific_region == 'Other' ? "style=display:table-row" : nil %> >
 			<td>
 				<div class="field">
-					<%= f.label :add_region_other, 'Specific Region - Other' %>:
+					<%= f.label :specific_region_other, 'Specific Region - Other' %>:
 				</div>
 			</td>
 			<td>
-        <%= f.text_field :add_region_other %>
+        <%= f.text_field :specific_region_other %>
 			</td>
 		</tr>
 		
     <tr>
 			<td>
 				<div class="field">
-					<%= f.label :add_region_2, 'Micro Region' %>:
+					<%= f.label :micro_region, 'Micro Region' %>:
 				</div>
 			</td>
 			<td>
-        <%= f.select(:add_region_2, Region.uniq.where.not(region_3: '').order('region_3 asc').pluck(:region_3) {|r| [r.region_3] } + ['Other'], {include_blank: 'None'}, {:id => 'micro_region_select'})%>
+        <%= f.select(:micro_region, Region.uniq.where.not(micro_region: '').order('micro_region asc').pluck(:micro_region) {|r| [r.micro_region] } + ['Other'], {include_blank: 'None'}, {:id => 'micro_region_select'})%>
 			</td>
 		</tr>
 		
-    <tr class="hidden_form_field" id="micro_region_other_text">
+    <tr class="hidden_form_field" id="micro_region_other_text" <%= @wine.micro_region == 'Other' ? "style=display:table-row" : nil %> >
 			<td>
 				<div class="field">
-					<%= f.label :add_region_2_other, 'Micro Region - Other' %>:
+					<%= f.label :micro_region_other, 'Micro Region - Other' %>:
 				</div>
 			</td>
 			<td>
-        <%= f.text_field :add_region_2_other %>
+        <%= f.text_field :micro_region_other %>
 			</td>
 		</tr>
 		

@@ -1,5 +1,6 @@
 class WinesController < ApplicationController
-  before_action :set_wine, only: [:show, :edit, :drink, :update, :destroy, :catalog]
+  before_action :set_wine, only: [:show, :edit, :update, :destroy, :catalog]
+  before_action :other_options, only: [:update]
 
   def error
   end
@@ -33,6 +34,22 @@ class WinesController < ApplicationController
 
   # GET /wines/1/edit
   def edit
+    if Region.where(country: @wine.country).size == 0
+      @wine.country_other = @wine.country
+      @wine.country = 'Other'
+    end
+    if Region.where(general_region: @wine.general_region).size == 0
+      @wine.general_region_other = @wine.general_region
+      @wine.general_region = 'Other'
+    end
+    if Region.where(specific_region: @wine.specific_region).size == 0
+      @wine.specific_region_other = @wine.specific_region
+      @wine.specific_region = 'Other'
+    end
+    if Region.where(micro_region: @wine.micro_region).size == 0
+      @wine.micro_region_other = @wine.micro_region
+      @wine.micro_region = 'Other'
+    end
   end
   
   # POST /wines/catalog/1
@@ -68,16 +85,16 @@ class WinesController < ApplicationController
       @wine.country = @wine.country_other
     end
     
-    if @wine.region == 'Other'
-      @wine.region = @wine.region_other
+    if @wine.general_region == 'Other'
+      @wine.general_region = @wine.general_region_other
     end
     
-    if @wine.add_region == 'Other'
-      @wine.add_region = @wine.add_region_other
+    if @wine.specific_region == 'Other'
+      @wine.specific_region = @wine.specific_region_other
     end
     
-    if @wine.add_region_2 == 'Other'
-      @wine.add_region_2 = @wine.add_region_2_other
+    if @wine.micro_region == 'Other'
+      @wine.micro_region = @wine.micro_region_other
     end
 
     respond_to do |format|
@@ -105,7 +122,7 @@ class WinesController < ApplicationController
         format.html { redirect_to @wine, notice: 'Wine was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'error', notice: 'Wine wasn\'t saved.' }
+        format.html { render json: @wine.errors, status: :unprocessable_entity }
         format.json { render json: @wine.errors, status: :unprocessable_entity }
       end
     end
@@ -129,6 +146,9 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :grapes, :region, :country, :stored, :add_region, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv, :user_id, :add_region_2, :catalog_date, :country_other)
+      params.require(:wine).permit(:name, :grapes, :country, :country_other, :general_region, :general_region_other, :specific_region, :specific_region_other, :micro_region, :micro_region_other, :stored, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv, :user_id, :catalog_date)
+    end
+
+    def other_options
     end
 end

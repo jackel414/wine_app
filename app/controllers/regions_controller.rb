@@ -49,7 +49,7 @@ class RegionsController < ApplicationController
   end
   
   def region_params
-    params.require(:region).permit(:country, :region_1, :region_2, :region_3)
+    params.require(:region).permit(:country, :general_region, :specific_region, :micro_region)
   end
   
   def check_admin

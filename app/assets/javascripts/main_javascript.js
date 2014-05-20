@@ -92,5 +92,26 @@ $(document).ready(function() {
       $('#micro_region_other_text').hide();
     }
   });
+
+  $('#country_select').on('change', function() {
+  	var country = $(this).val();
+  	$("#general_region_select").html("<option></option>");
+  	$.ajax({
+  		url: '/region_dropdown.json',
+  		type: 'GET',
+  		data: 'country=' + country,
+  		success: function(result) {
+  			already_listed = []
+	  		for(var i = 0; i < result.length; i++) {
+	  			menu_text = JSON.stringify(result[i].general_region).replace(/"/g, "");
+  				if(already_listed.indexOf(menu_text) == -1) {
+	  				$("#general_region_select").append("<option>" + menu_text + "</option>");
+	  				already_listed.push(menu_text);
+	  			}
+	  		}
+	  		$("#general_region_select").append("<option>Other</option>");
+  		}
+  	})
+  });
   
 });

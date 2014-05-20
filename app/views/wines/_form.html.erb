@@ -45,6 +45,7 @@
 			</td>
 			<td>
         <%= f.select(:country, Region.uniq.order('country asc').pluck(:country) {|r| [r.country] } + ['Other'], {include_blank: ''}, {:id => 'country_select'})%>
+        <% #f.collection_select :country, Region.order(:country), :country, :country, {include_blank: ''}, {:id => 'country_select'} %>
 			</td>
 		</tr>
 		
@@ -66,7 +67,9 @@
 				</div>
 			</td>
 			<td>
-        <%= f.select(:general_region, Region.uniq.where.not(general_region: '').order('general_region asc').pluck(:general_region) {|r| [r.general_region] } + ['Other'], {include_blank: 'None'}, {:id => 'general_region_select'})%>
+        <%= f.select(:general_region, Region.uniq.where(general_region: 'nothing').order('general_region asc').pluck(:general_region) {|r| [r.general_region] }, {include_blank: ''}, {:id => 'general_region_select'})%>
+        <% #f.grouped_collection_select :general_region, Region.where.not(general_region: '').order(:general_region), :general_region, :country, :general_region, :general_region %>
+        <% #f.select(:general_region, ['None'], {:id => 'general_region_select'}) %>
 			</td>
 		</tr>
     

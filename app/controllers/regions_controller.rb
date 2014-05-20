@@ -13,6 +13,14 @@ class RegionsController < ApplicationController
   def edit
   end
   
+  def region_dropdown
+    @general_region = Region.uniq.where(country: params[:country]).where.not(general_region: '').order(:general_region)
+    #@general_region = Region.uniq.where(country: params[:country]).order('general_region asc').pluck(:general_region)
+    respond_to do |format|
+      format.json
+    end
+  end
+
   def create
     @region = Region.new(region_params)
     

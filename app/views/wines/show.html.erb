@@ -9,7 +9,7 @@
 			
 			<p>
 			  <strong>Region:</strong>
-			  <% if @wine.micro_region != nil && @wine.micro_region != '' %><%= @wine.micro_region %>, <% end %><% if @wine.specific_region != nil && @wine.specific_region != '' %><%= @wine.specific_region %>, <% end %><%= @wine.general_region %>
+			  <%= @wine.micro_region ? @wine.micro_region = ', ' : nil %><%= @wine.specific_region ? @wine.specific_region + ', ' : nil %><%= @wine.general_region ? @wine.general_region : 'None' %>
 			</p>
 
 			<p>
@@ -42,47 +42,27 @@
 			
 			<p>
 				<strong>Vintage:</strong>
-				<% if @wine.vintage != (nil or '') %>
-          <%= @wine.vintage %>
-        <% else %>
-          N/A
-        <% end %>
+				<%= @wine.vintage ? @wine.vintage : 'N/A' %>
 			</p>
 
 			<p>
 				<strong>Price:</strong>
-				<% if @wine.price? %>
-					<%= number_to_currency @wine.price %>
-				<% else %>
-					N/A
-				<% end %>
+				<%= @wine.price ? number_to_currency(@wine.price) : 'N/A' %>
 			</p>
 
 			<p>
 				<strong>Location Purchased:</strong>
-        <% if @wine.location != (nil || '')%>
-				  <%= @wine.location %>
-        <% else %>
-          N/A
-        <% end %>
+				<%= @wine.location ? @wine.location : 'N/A' %>
 			</p>
 
 			<p>
 				<strong>Purchase Date:</strong>
-        <% if @wine.purchase_date != (nil || '')%>
-				  <%= @wine.purchase_date %>
-        <% else %>
-          N/A
-        <% end %>
+				<%= @wine.purchase_date ? @wine.purchase_date : 'N/A' %>
 			</p>
 			
 			<p>
 				<strong>ABV:</strong>
-        <% if @wine.abv? %>
-          <%= @wine.abv %>%
-        <% else %>
-          N/A
-        <% end %>
+        		<%= @wine.abv ? @wine.abv : 'N/A' %>
 			</p>
 				
 		</div>

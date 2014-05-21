@@ -7,12 +7,12 @@ $(document).ready(function() {
 		$("#wine_form_catalog_info").show();
 	}
 	
-	if ($("#add_region_field").val() != '') {
+	if ($("#add_region_field").val()) {
 		$("#add_region_field").show();
 		$("#add_region_link").hide();
 	}
 	
-	if ($("#add_region_field_2").val() != '') {
+	if ($("#add_region_field_2").val()) {
 		$("#add_region_field_2").show();
 		$("#add_region_link_2").hide();
 	}

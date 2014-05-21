@@ -95,7 +95,10 @@ $(document).ready(function() {
 
   $('#country_select').on('change', function() {
   	var country = $(this).val();
-  	$("#general_region_select").html("<option></option>");
+  	$("#general_region_select").html("<option>None</option>");
+  	$("#general_region_row").show();
+  	$("#specific_region_row").hide();
+  	$("#micro_region_row").hide();
   	$.ajax({
   		url: '/region_dropdown.json',
   		type: 'GET',
@@ -110,6 +113,59 @@ $(document).ready(function() {
 	  			}
 	  		}
 	  		$("#general_region_select").append("<option>Other</option>");
+  		}
+  	})
+  });
+  
+  $('#general_region_select').on('change', function() {
+  	var general_region = $(this).val();
+  	if(general_region == 'None') {
+	  	$("#specific_region_row").hide();
+  	} else {
+  		$("#specific_region_row").show();
+  	}
+  	$("#specific_region_select").html("<option>None</option>");
+  	$("#micro_region_row").hide();
+  	$.ajax({
+  		url: '/region_dropdown.json',
+  		type: 'GET',
+  		data: 'general_region=' + general_region,
+  		success: function(result) {
+  			already_listed = []
+	  		for(var i = 0; i < result.length; i++) {
+	  			menu_text = JSON.stringify(result[i].specific_region).replace(/"/g, "");
+  				if(already_listed.indexOf(menu_text) == -1) {
+	  				$("#specific_region_select").append("<option>" + menu_text + "</option>");
+	  				already_listed.push(menu_text);
+	  			}
+	  		}
+	  		$("#specific_region_select").append("<option>Other</option>");
+  		}
+  	})
+  });
+  
+  $('#specific_region_select').on('change', function() {
+  	var specific_region = $(this).val();
+  	$("#micro_region_select").html("<option>None</option>");
+  	if(specific_region == 'None') {
+	  	$("#micro_region_row").hide();
+  	} else {
+  		$("#micro_region_row").show();
+  	}
+  	$.ajax({
+  		url: '/region_dropdown.json',
+  		type: 'GET',
+  		data: 'specific_region=' + specific_region,
+  		success: function(result) {
+  			already_listed = []
+	  		for(var i = 0; i < result.length; i++) {
+	  			menu_text = JSON.stringify(result[i].micro_region).replace(/"/g, "");
+  				if(already_listed.indexOf(menu_text) == -1) {
+	  				$("#micro_region_select").append("<option>" + menu_text + "</option>");
+	  				already_listed.push(menu_text);
+	  			}
+	  		}
+	  		$("#micro_region_select").append("<option>Other</option>");
   		}
   	})
   });

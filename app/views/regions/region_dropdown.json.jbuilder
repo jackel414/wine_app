@@ -1,3 +1,3 @@
-json.array!(@general_region) do |region|
-  json.extract! region, :general_region
+json.array!(@region) do |region|
+  json.extract! region, @field
 end

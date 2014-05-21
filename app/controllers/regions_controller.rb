@@ -14,8 +14,17 @@ class RegionsController < ApplicationController
   end
   
   def region_dropdown
-    @general_region = Region.uniq.where(country: params[:country]).where.not(general_region: '').order(:general_region)
-    #@general_region = Region.uniq.where(country: params[:country]).order('general_region asc').pluck(:general_region)
+    if params[:country]
+      @region = Region.uniq.where(country: params[:country]).where.not(general_region: '').order(:general_region)
+      @field = :general_region
+    elsif params[:general_region]
+      @region = Region.uniq.where(general_region: params[:general_region]).where.not(specific_region: '').order(:specific_region)
+      @field = :specific_region
+    elsif params[:specific_region]
+      @region = Region.uniq.where(specific_region: params[:specific_region]).where.not(micro_region: '').order(:micro_region)
+      @field = :micro_region
+    end
+      
     respond_to do |format|
       format.json
     end

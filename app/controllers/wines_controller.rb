@@ -38,17 +38,26 @@ class WinesController < ApplicationController
       @wine.country_other = @wine.country
       @wine.country = 'Other'
     end
-    if Region.where(general_region: @wine.general_region).size == 0
-      @wine.general_region_other = @wine.general_region
-      @wine.general_region = 'Other'
+
+    if @wine.general_region
+      if Region.where(general_region: @wine.general_region).size == 0
+        @wine.general_region_other = @wine.general_region
+        @wine.general_region = 'Other'
+      end
     end
-    if Region.where(specific_region: @wine.specific_region).size == 0
-      @wine.specific_region_other = @wine.specific_region
-      @wine.specific_region = 'Other'
+
+    if @wine.specific_region
+      if Region.where(specific_region: @wine.specific_region).size == 0
+        @wine.specific_region_other = @wine.specific_region
+        @wine.specific_region = 'Other'
+      end
     end
-    if Region.where(micro_region: @wine.micro_region).size == 0
-      @wine.micro_region_other = @wine.micro_region
-      @wine.micro_region = 'Other'
+
+    if @wine.micro_region
+      if Region.where(micro_region: @wine.micro_region).size == 0
+        @wine.micro_region_other = @wine.micro_region
+        @wine.micro_region = 'Other'
+      end
     end
   end
   

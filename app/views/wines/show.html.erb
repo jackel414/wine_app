@@ -9,7 +9,7 @@
 			
 			<p>
 			  <strong>Region:</strong>
-			  <%= @wine.micro_region ? @wine.micro_region = ', ' : nil %><%= @wine.specific_region ? @wine.specific_region + ', ' : nil %><%= @wine.general_region ? @wine.general_region : 'None' %>
+			  <%= @wine.micro_region ? @wine.micro_region + ', ' : nil %><%= @wine.specific_region ? @wine.specific_region + ', ' : nil %><%= @wine.general_region ? @wine.general_region : 'None' %>
 			</p>
 
 			<p>

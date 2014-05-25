@@ -13,23 +13,6 @@ class RegionsController < ApplicationController
   def edit
   end
   
-  def region_dropdown
-    if params[:country]
-      @region = Region.uniq.where(country: params[:country]).where.not(general_region: '').order(:general_region)
-      @field = :general_region
-    elsif params[:general_region]
-      @region = Region.uniq.where(general_region: params[:general_region]).where.not(specific_region: '').order(:specific_region)
-      @field = :specific_region
-    elsif params[:specific_region]
-      @region = Region.uniq.where(specific_region: params[:specific_region]).where.not(micro_region: '').order(:micro_region)
-      @field = :micro_region
-    end
-      
-    respond_to do |format|
-      format.json
-    end
-  end
-
   def create
     @region = Region.new(region_params)
     
@@ -66,7 +49,7 @@ class RegionsController < ApplicationController
   end
   
   def region_params
-    params.require(:region).permit(:country, :general_region, :specific_region, :micro_region)
+    params.require(:region).permit(:name, :country_id, :province_id)
   end
   
   def check_admin

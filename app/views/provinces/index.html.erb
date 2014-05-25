@@ -1,0 +1,8 @@
+<h1>Provinces</h1>
+<ul>
+  <% @provinces.each do |province| %>
+  <li><%= province.name %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Add new province', new_province_path %>

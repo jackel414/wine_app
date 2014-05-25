@@ -1,0 +1,8 @@
+<h1>Countries</h1>
+<ul>
+  <% @countries.each do |country| %>
+  <li><%= country.name %> - <%= link_to 'Edit', edit_country_path(country.id) %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Add new country', new_country_path %>

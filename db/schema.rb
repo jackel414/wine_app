@@ -11,16 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518144012) do
+ActiveRecord::Schema.define(version: 20140525222440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "countries", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "provinces", force: true do |t|
+    t.string  "name"
+    t.integer "country_id"
+  end
+
   create_table "regions", force: true do |t|
-    t.string "country"
-    t.string "general_region"
-    t.string "specific_region"
-    t.string "micro_region"
+    t.string  "name"
+    t.integer "country_id"
+    t.integer "province_id"
   end
 
   create_table "users", force: true do |t|

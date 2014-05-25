@@ -15,4 +15,6 @@ WineApp::Application.routes.draw do
   resources :users
   resources :sessions
   resources :regions
+  resources :countries
+  resources :provinces
 end

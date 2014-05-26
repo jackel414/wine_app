@@ -4,6 +4,7 @@ class Wine < ActiveRecord::Base
     
   validates_presence_of :name, :grapes, :country, :wine_type, :on => :create
   validates_presence_of :name, :grapes, :country, :wine_type, :on => :update
+  validates :price, numericality: true, :allow_blank => true
   
   scope :cellared, where(stored: true)
   scope :cataloged, where(stored: false)

@@ -90,7 +90,7 @@ class WinesController < ApplicationController
         format.html { redirect_to @wine, notice: 'Wine was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render json: @wine.errors, status: :unprocessable_entity }
+        format.html { render action: 'edit' }
         format.json { render json: @wine.errors, status: :unprocessable_entity }
       end
     end

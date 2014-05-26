@@ -1,7 +1,7 @@
 <h1>Provinces</h1>
 <ul>
   <% @provinces.each do |province| %>
-  <li><%= province.name %></li>
+  <li><%= province.name %> - <%= link_to 'Edit', edit_province_path(province.id) %></li>
   <% end %>
 </ul>
 

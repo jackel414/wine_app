@@ -65,22 +65,6 @@ class WinesController < ApplicationController
       @wine.cataloged_date = Time.now
     end
     
-    if @wine.country == 'Other'
-      @wine.country = @wine.country_other
-    end
-    
-    if @wine.general_region == 'Other'
-      @wine.general_region = @wine.general_region_other
-    end
-    
-    if @wine.specific_region == 'Other'
-      @wine.specific_region = @wine.specific_region_other
-    end
-    
-    if @wine.micro_region == 'Other'
-      @wine.micro_region = @wine.micro_region_other
-    end
-
     respond_to do |format|
       if @wine.save
         format.html { redirect_to @wine, notice: 'Wine was successfully created.' }

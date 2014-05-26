@@ -34,31 +34,6 @@ class WinesController < ApplicationController
 
   # GET /wines/1/edit
   def edit
-    if Region.where(country: @wine.country).size == 0
-      @wine.country_other = @wine.country
-      @wine.country = 'Other'
-    end
-
-    if @wine.general_region
-      if Region.where(general_region: @wine.general_region).size == 0
-        @wine.general_region_other = @wine.general_region
-        @wine.general_region = 'Other'
-      end
-    end
-
-    if @wine.specific_region
-      if Region.where(specific_region: @wine.specific_region).size == 0
-        @wine.specific_region_other = @wine.specific_region
-        @wine.specific_region = 'Other'
-      end
-    end
-
-    if @wine.micro_region
-      if Region.where(micro_region: @wine.micro_region).size == 0
-        @wine.micro_region_other = @wine.micro_region
-        @wine.micro_region = 'Other'
-      end
-    end
   end
   
   # POST /wines/catalog/1
@@ -155,7 +130,7 @@ class WinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wine_params
-      params.require(:wine).permit(:name, :grapes, :country, :country_other, :general_region, :general_region_other, :specific_region, :specific_region_other, :micro_region, :micro_region_other, :stored, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv, :user_id, :catalog_date)
+      params.require(:wine).permit(:name, :grapes, :country, :province, :region, :stored, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv, :user_id, :catalog_date)
     end
 
     def other_options

@@ -26,7 +26,7 @@
 			</td>
 		</tr>
 		
-    <tr>
+    	<tr>
 			<td>
 				<div class="field">
 					<%= f.label :grapes %>:
@@ -37,96 +37,40 @@
 			</td>
 		</tr>
 		
-    <tr>
+    	<tr>
 			<td>
 				<div class="field">
 					<%= f.label :country %>:
 				</div>
 			</td>
 			<td>
-        <%= f.select(:country, Region.uniq.order('country asc').pluck(:country) {|r| [r.country] } + ['Other'], {include_blank: ''}, {:id => 'country_select'})%>
-        <% #f.collection_select :country, Region.order(:country), :country, :country, {include_blank: ''}, {:id => 'country_select'} %>
+				<%= f.text_field :country, :class => 'autocomplete_wine_field', :id => 'country', :title => 'test' %>
 			</td>
 		</tr>
 		
-    <tr class="hidden_form_field" id="country_other_text" <%= @wine.country == 'Other' ? "style=display:table-row" : nil %> >
+		<tr id="province_row">
 			<td>
 				<div class="field">
-					<%= f.label :country_other, 'Country - Other' %>:
+					<%= f.label :province, 'State / Province:' %>
 				</div>
 			</td>
 			<td>
-        <%= f.text_field :country_other %>
-			</td>
-		</tr>
-		
-		<tr class="hidden_form_field" id="general_region_row">
-			<td>
-				<div class="field">
-					<%= f.label :general_region, 'General Region' %>:
-				</div>
-			</td>
-			<td>
-        <%= f.select(:general_region, Region.uniq.where(general_region: 'nothing').order('general_region asc').pluck(:general_region) {|r| [r.general_region] }, {include_blank: 'None'}, {:id => 'general_region_select'})%>
+				<%= f.text_field :province, :class => 'autocomplete_wine_field', :id => 'province' %>
 			</td>
 		</tr>
     
-    <tr class="hidden_form_field" id="general_region_other_text" <%= @wine.general_region == 'Other' ? "style=display:table-row" : nil %> >
+		<tr id="region_row">
 			<td>
 				<div class="field">
-					<%= f.label :general_region_other, 'General Region - Other' %>:
+					<%= f.label :region %>:
 				</div>
 			</td>
 			<td>
-        <%= f.text_field :general_region_other %>
+				<%= f.text_field :region, :class => 'autocomplete_wine_field', :id => 'region' %>
 			</td>
-		</tr>
-		
-	<tr class="hidden_form_field" id="specific_region_row">
-			<td>
-				<div class="field">
-					<%= f.label :specific_region, 'Specific Region' %>:
-				</div>
-			</td>
-			<td>
-        <%= f.select(:specific_region, Region.uniq.where(specific_region: 'nothing').order('specific_region asc').pluck(:specific_region) {|r| [r.specific_region] }, {include_blank: 'None'}, {:id => 'specific_region_select'})%>
-			</td>
-		</tr>
-		
-    <tr class="hidden_form_field" id="specific_region_other_text" <%= @wine.specific_region == 'Other' ? "style=display:table-row" : nil %> >
-			<td>
-				<div class="field">
-					<%= f.label :specific_region_other, 'Specific Region - Other' %>:
-				</div>
-			</td>
-			<td>
-        <%= f.text_field :specific_region_other %>
-			</td>
-		</tr>
-		
-	<tr class="hidden_form_field" id="micro_region_row">
-			<td>
-				<div class="field">
-					<%= f.label :micro_region, 'Micro Region' %>:
-				</div>
-			</td>
-			<td>
-        <%= f.select(:micro_region, Region.uniq.where(micro_region: 'nothing').order('micro_region asc').pluck(:micro_region) {|r| [r.micro_region] }, {include_blank: 'None'}, {:id => 'micro_region_select'})%>
-			</td>
-		</tr>
-		
-    <tr class="hidden_form_field" id="micro_region_other_text" <%= @wine.micro_region == 'Other' ? "style=display:table-row" : nil %> >
-			<td>
-				<div class="field">
-					<%= f.label :micro_region_other, 'Micro Region - Other' %>:
-				</div>
-			</td>
-			<td>
-        <%= f.text_field :micro_region_other %>
-			</td>
-		</tr>
-		
-    <tr>
+		</tr>		
+    	
+    	<tr>
 			<td>
 				<div class="field">
 					<%= f.label :winery %>:
@@ -137,7 +81,7 @@
 			</td>
 		</tr>
 		
-    <tr>
+    	<tr>
 			<td>
 				<div class="field">
 					<%= f.label :vintage %>:
@@ -148,7 +92,7 @@
 			</td>
 		</tr>
 		
-    <tr>
+    	<tr>
 			<td>
 				<div class="field">
 					<%= f.label :location %>:
@@ -159,7 +103,7 @@
 			</td>
 		</tr>
 		
-    <tr>
+    	<tr>
 			<td>
 				<div class="field">
 					<%= f.label :wine_type %>:
@@ -170,7 +114,7 @@
 			</td>
 		</tr>
 		
-    <tr>
+    	<tr>
 			<td>
 				<div class="field">
 					<%= f.label :price %>:
@@ -181,7 +125,7 @@
 			</td>
 		</tr>
 		
-    <tr>
+    	<tr>
 			<td>
 				<div class="field">
 					<%= f.label :purchase_date %>:
@@ -192,7 +136,7 @@
 			</td>
 		</tr>
 		
-    <tr>
+    	<tr>
 			<td>
 				<div class="field">
 					<%= f.label :abv, 'ABV' %>:
@@ -203,7 +147,7 @@
 			</td>
 		</tr>
 		
-    <tr>
+    	<tr>
 			<td colspan="2" id="centered_row">
 				<div class="field">
 					<%= f.label :stored, 'In Cellar?' %> <%= f.check_box :stored, :id => 'in_cellar_link' %> &nbsp;&nbsp;&nbsp; <%= f.label :catalog, 'Catalog?' %> <%= f.check_box :catalog, :id => 'catalog_link' %>
@@ -211,7 +155,7 @@
 			</td>
 		</tr> 
 		
-    <tr class="hidden_form_field" id="in_cellar_field">
+    	<tr class="hidden_form_field" id="in_cellar_field">
 			<td>
 				<div class="field">
 					<%= f.label :num_bottles %>:

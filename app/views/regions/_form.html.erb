@@ -29,7 +29,8 @@
 				</div>
 			</td>
 			<td>
-        		<%= f.collection_select(:province_id, Province.all.order(:name), :id, :name, {include_blank: ''})%>
+        		<%= f.grouped_collection_select :province_id, Country.all.order(:name), :provinces, :name, :id, :name, {include_blank: ''} %>
+        		<% #f.grouped_collection_select :state_id, Country.order(:name), :states, :name, :id, :name, include_blank: true %>
 			</td>
 		</tr>
 		<tr>

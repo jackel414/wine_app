@@ -12,6 +12,22 @@ class ProvincesController < ApplicationController
   
   def edit
   end
+
+  def province_list
+    if params[:area] == 'country'
+      @areas = Country.where("name ILIKE ?", "#{params[:term]}%")
+    elsif params[:area] == 'province'
+      @areas = Province.where("name ILIKE ?", "#{params[:term]}%")
+    elsif params[:area] == 'region'
+      @areas = Region.where("name ILIKE ?", "#{params[:term]}%")
+    else
+      @areas = Province.where("name ILIKE ?", "#{params[:term]}%")
+    end
+
+    respond_to do |format|
+      format.json
+    end
+  end
   
   def create
     @province = Province.new(province_params)

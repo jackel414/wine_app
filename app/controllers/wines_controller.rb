@@ -1,24 +1,20 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy, :catalog]
-  before_action :other_options, only: [:update]
 
   def error
   end
   
-  # GET /wines
-  # GET /wines.json
   def index
-	@wines = Wine.all
   end
 
   # GET /wines
   def cellar
 	if params[:status] == "cellared"
-		@wines = Wine.where(user_id: current_user.id, stored: true)
+		@wines = Wine.where(user_id: current_user.id, stored: true).order(:name)
 	elsif params[:status] == "cataloged"
-		@wines = Wine.where(user_id: current_user.id, catalog: true)
+		@wines = Wine.where(user_id: current_user.id, catalog: true).order(:name)
 	else
-		@wines = Wine.where(user_id: current_user.id)
+		@wines = Wine.where(user_id: current_user.id).order(:name)
 	end
   end
   
@@ -30,6 +26,7 @@ class WinesController < ApplicationController
   # GET /wines/new
   def new
     @wine = Wine.new
+    @wine.num_bottles = 1
   end
 
   # GET /wines/1/edit
@@ -64,7 +61,7 @@ class WinesController < ApplicationController
     if @wine.catalog == true
       @wine.cataloged_date = Time.now
     end
-    
+
     respond_to do |format|
       if @wine.save
         format.html { redirect_to @wine, notice: 'Wine was successfully created.' }
@@ -81,12 +78,6 @@ class WinesController < ApplicationController
   def update
     respond_to do |format|
       if @wine.update(wine_params)
-        if @wine.num_bottles == 0
-          @wine.update(:stored => false)
-        elsif @wine.stored == false
-          @wine.update(:num_bottles => 0)
-        end
-                
         format.html { redirect_to @wine, notice: 'Wine was successfully updated.' }
         format.json { head :no_content }
       else
@@ -117,6 +108,4 @@ class WinesController < ApplicationController
       params.require(:wine).permit(:name, :grapes, :country, :province, :region, :stored, :winery, :vintage, :location, :wine_type, :price, :catalog, :purchase_date, :drink_date, :with_meal, :meal, :notes, :rating, :num_bottles, :abv, :user_id, :catalog_date)
     end
 
-    def other_options
-    end
 end

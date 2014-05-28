@@ -7,7 +7,7 @@ STYLES
 
 
 html {
-	width: 100%;
+	//width: 100%;
 	background: #fff;
 }
 
@@ -18,7 +18,7 @@ body {
 	font-size: 13px;
 	line-height: 18px;
 	margin: 0 auto 0 auto;
-	width: 66.5%; /* 904px */
+	width: 1000px;
 }
 
 header {
@@ -41,14 +41,14 @@ header {
 main {
 	margin-left: auto;
 	margin-right: auto;
-	min-height: 500px;
+	min-height: 600px;
 	h1 {
 		margin: 10px 0 0 10px;
 	}
 }
 
 #container {
-  margin: 10px;
+  margin: 20px 10px;
 }
 
 footer {
@@ -96,9 +96,13 @@ a {
 	}
 }
 
+#logo {
+  margin-left: 15px;
+}
+
 .tagline {
 	font-family: $base_font;
-	margin: 15px 0 0 5px;
+	margin: 15px 0 0 15px;
 }
 
 .button {

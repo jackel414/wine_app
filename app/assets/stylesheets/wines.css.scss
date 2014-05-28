@@ -115,14 +115,34 @@ STYLES
 	float: right;
 }
 
-#add_region_link {
-	@extend .wine_cellar_button;
-	margin: 3px 3px;
+.wine_list_table {
+  color: black;
+  text-align: left;
+  font-size: 15px;
+  padding-left: 10px;
+  padding-top: 10px;
+  a {
+    color: black;    
+  }
+  th {
+    padding-right: 10px;
+    text-decoration: underline;
+  }
+  td {
+    padding-right: 10px;
+  }
 }
 
-#add_region_link_2 {
-	@extend .wine_cellar_button;
-	margin: 3px 3px;
+.cellar_status_links {
+  font-size: 12px;
+  color: blue;
+  margin: 0 10px;
+  font-weight: normal;
+  a {
+    color: blue;
+    font-weight: normal;
+    margin: 0 10px;
+  }
 }
 
 .big_field_label {

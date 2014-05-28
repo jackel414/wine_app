@@ -1,67 +1,60 @@
+<!--
 <section>
 	<div class="wine_cellar_buttons_top">
-		<% if params[:status] == nil %>
-			<div class="wine_cellar_button_active">
-		<% else %>
-			<div class="wine_cellar_button">
-		<% end %>
-			<%= link_to 'All Wines', wines_path %>
-		</div>
-
+		<div class="<%= params[:status] == nil ? 'wine_cellar_button_active' : 'wine_cellar_button' %>" ><%= link_to 'All Wines', wines_path %></div>
 		<div class="spacer"></div>
-		
-		<% if params[:status] == "cellared" %>
-			<div class="wine_cellar_button_active">
-		<% else %>
-			<div class="wine_cellar_button">
-		<% end %>
-			<%= link_to 'My Cellar', wines_path(:status => "cellared") %>
-		</div>
-		
+    <div class="<%= params[:status] == 'cellared' ? 'wine_cellar_button_active' : 'wine_cellar_button' %>"><%= link_to 'My Cellar', wines_path(:status => "cellared") %></div>
 		<div class="spacer"></div>
-		
-		<% if params[:status] == "cataloged" %>
-			<div class="wine_cellar_button_active">
-		<% else %>
-			<div class="wine_cellar_button">
-		<% end %>
-			<%= link_to 'My Catalog', wines_path(:status => "cataloged") %>
-		</div>
-	</div>
-	
-	<h1>
-		<% if params[:status] == "cellared" %>
-			My Wine Cellar
-		<% elsif params[:status] == "cataloged" %>
-			My Wine Catalog
-		<% else %>
-			My Wines
-		<% end %>
-	</h1>
-
-	<div id="wine_list">
-
-	<% if @wines.empty? %>
-		<p><em>No wines to display.</em></p>
-	<% else %>
-		<% @wines.each do |w| %>
-			<strong><%= link_to w.name, w %></strong> - <%= w.grapes %> from <%= w.region ? w.region + ', ' : nil %><%= w.province ? w.province + ', ' : nil %><%= w.country %> 
-			<br>
-		<% end %>
-	<% end %>
-	</div>
-
-	<br>
-
-	<div class="wine_cellar_buttons_bottom">
-		<div class="button">
-			<%= link_to 'Home', home_path %>
-		</div>
-
-		<div class="spacer"></div>
-		
-		<div class="button">
-			<%= link_to 'Add Wine', new_wine_path %>
-		</div>
+		<div class="<%= params[:status] == 'cataloged' ? 'wine_cellar_button_active' : 'wine_cellar_button' %>"><%= link_to 'My Catalog', wines_path(:status => "cataloged") %></div>
 	</div>
 </section>
+-->
+	
+<% if params[:status] == "cellared" %>
+  <h1>My Wine Cellar <span class="cellar_status_links"><%= link_to 'All Wines', wines_path %> | <%= link_to 'My Catalog', wines_path(:status => "cataloged") %></span></h1>
+<% elsif params[:status] == "cataloged" %>
+	<h1>My Wine Catalog <span class="cellar_status_links"><%= link_to 'All Wines', wines_path %> | <%= link_to 'My Catalog', wines_path(:status => "cataloged") %></span></h1>
+<% else %>
+	<h1>All Wines <span class="cellar_status_links"><%= link_to 'My Cellar', wines_path(:status => "cellared") %> | <%= link_to 'My Catalog', wines_path(:status => "cataloged") %></span></h1>
+<% end %>
+
+<% if @wines.empty? %>
+	<p><em>No wines to display.</em></p>
+<% else %>
+  <table class="wine_list_table">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Producer</th>
+        <th>Grape(s)</th>
+        <th>Region</th>
+        <th>Country</th>
+        <th>Bottles</th>
+      </tr>
+      <% @wines.each do |w| %>
+  		  <tr>
+          <td><strong><%= link_to w.name, w %></strong></td>
+          <td><%= w.winery ? w.winery : 'N/A' %></td>
+          <td><%= w.grapes %></td>
+          <td><%= w.region ? w.region + ', ' : nil %><%= w.province ? w.province : 'None' %></td>
+          <td><%= w.country %></td>
+          <td><%= w.num_bottles %></td>
+        </tr>
+  	  <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<br>
+
+<div class="wine_cellar_buttons_bottom">
+	<div class="button">
+		<%= link_to 'Home', home_path %>
+	</div>
+
+	<div class="spacer"></div>
+
+	<div class="button">
+		<%= link_to 'Add Wine', new_wine_path %>
+	</div>
+</div>

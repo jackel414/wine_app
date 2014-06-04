@@ -1,0 +1,8 @@
+<h1>Grapes</h1>
+<ul>
+  <% @grapes.each do |grape| %>
+  <li><%= grape.name %> - <%= link_to 'Edit', edit_grape_path(grape.id) %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Add new grape', new_grape_path %>

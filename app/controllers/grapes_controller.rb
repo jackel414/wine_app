@@ -13,14 +13,6 @@ class GrapesController < ApplicationController
   def edit
   end
   
-  def grapes_list
-    @grapes = Grape.where("name ILIKE ?", "#{params[:term]}%")
-
-    respond_to do |format|
-      format.json
-    end
-  end
-
   def create
     @grape = Grape.new(grape_params)
     

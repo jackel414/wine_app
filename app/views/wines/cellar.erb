@@ -13,7 +13,7 @@
 <% if params[:status] == "cellared" %>
   <h1>My Wine Cellar <span class="cellar_status_links"><%= link_to 'All Wines', wines_path %> | <%= link_to 'My Catalog', wines_path(:status => "cataloged") %></span></h1>
 <% elsif params[:status] == "cataloged" %>
-	<h1>My Wine Catalog <span class="cellar_status_links"><%= link_to 'All Wines', wines_path %> | <%= link_to 'My Catalog', wines_path(:status => "cataloged") %></span></h1>
+	<h1>My Wine Catalog <span class="cellar_status_links"><%= link_to 'All Wines', wines_path %> | <%= link_to 'My Cellar', wines_path(:status => "cellared") %></span></h1>
 <% else %>
 	<h1>All Wines <span class="cellar_status_links"><%= link_to 'My Cellar', wines_path(:status => "cellared") %> | <%= link_to 'My Catalog', wines_path(:status => "cataloged") %></span></h1>
 <% end %>
@@ -24,12 +24,12 @@
   <table class="wine_list_table">
     <tbody>
       <tr>
-        <th>Name</th>
-        <th>Producer</th>
-        <th>Grape(s)</th>
-        <th>Region</th>
-        <th>Country</th>
-        <th>Bottles</th>
+        <th><%= link_to 'Name', wines_path(:sort => 'name', :status => params[:status]) %></th>
+        <th><%= link_to 'Producer', wines_path(:sort => 'winery', :status => params[:status]) %></th>
+        <th><%= link_to 'Grape(s)', wines_path(:sort => 'grapes', :status => params[:status]) %></th>
+        <th><%= link_to 'Region', wines_path(:sort => 'province', :status => params[:status]) %></th>
+        <th><%= link_to 'Country', wines_path(:sort => 'country', :status => params[:status]) %></th>
+        <th><%= link_to 'Bottles', wines_path(:sort => 'num_bottles', :status => params[:status]) %></th>
       </tr>
       <% @wines.each do |w| %>
   		  <tr>

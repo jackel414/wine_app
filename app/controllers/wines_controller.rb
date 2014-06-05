@@ -9,13 +9,26 @@ class WinesController < ApplicationController
 
   # GET /wines
   def cellar
-	if params[:status] == "cellared"
-		@wines = Wine.where(user_id: current_user.id, stored: true).order(:name)
-	elsif params[:status] == "cataloged"
-		@wines = Wine.where(user_id: current_user.id, catalog: true).order(:name)
-	else
-		@wines = Wine.where(user_id: current_user.id).order(:name)
-	end
+  	if params[:status] == "cellared"
+      if params[:sort]
+        @wines = Wine.where(user_id: current_user.id, stored: true).order(params[:sort])
+      else
+  		  @wines = Wine.where(user_id: current_user.id, stored: true).order(:name)
+      end
+  	elsif params[:status] == "cataloged"
+      if params[:sort]
+        @wines = Wine.where(user_id: current_user.id, catalog: true).order(params[:sort])
+      else
+  		  @wines = Wine.where(user_id: current_user.id, catalog: true).order(:name)
+      end
+  	else
+      if params[:sort]
+        @wines = Wine.where(user_id: current_user.id).order(params[:sort])
+      else
+  		  @wines = Wine.where(user_id: current_user.id).order(:name)
+      end
+  	end
+
   end
   
   # GET /wines/1
@@ -31,6 +44,22 @@ class WinesController < ApplicationController
 
   # GET /wines/1/edit
   def edit
+  end
+  
+  def wine_form_autocomplete_list
+    if params[:model] == 'country'
+      @list_items = Country.where("name ILIKE ?", "#{params[:term]}%")
+    elsif params[:model] == 'province'
+      @list_items = Province.where("name ILIKE ?", "#{params[:term]}%")
+    elsif params[:model] == 'region'
+      @list_items = Region.where("name ILIKE ?", "#{params[:term]}%")
+    elsif params[:model] == 'grape'
+      @list_items = Grape.where("name ILIKE ?", "#{params[:term]}%")
+    end
+
+    respond_to do |format|
+      format.json
+    end
   end
   
   # POST /wines/catalog/1

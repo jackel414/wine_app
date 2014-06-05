@@ -53,9 +53,9 @@ $(document).ready(function() {
       })
       .autocomplete({
         source: function( request, response ) {
-          $.getJSON( "/province_list.json", {
+          $.getJSON( "/wine_form_autocomplete_list.json", {
             term: extractLast( request.term ),
-            area: $(':focus').attr('id')
+            model: $(':focus').attr('id')
             },
             response
           );
@@ -79,54 +79,6 @@ $(document).ready(function() {
           terms.push( ui.item.value );
           terms.push( "" );
           this.value = terms.join( "" );
-          return false;
-        }
-      });
-  });
-
-  //this function allows for autocomplete on the grape fields
-  $(function() {
-    function split( val ) {
-      return val.split( /,\s*/ );
-    }
-    function extractLast( term ) {
-      return split( term ).pop();
-    }
-
-    $( ".autocomplete_grape_field" )
-      // don't navigate away from the field on tab when selecting an item
-      .bind( "keydown", function( event ) {
-        if ( event.keyCode === $.ui.keyCode.TAB && $( this ).data( "ui-autocomplete" ).menu.active ) {
-          event.preventDefault();
-        }
-      })
-      .autocomplete({
-        source: function( request, response ) {
-          $.getJSON( "/grapes_list.json", {
-            term: extractLast( request.term ),
-            },
-            response
-          );
-        },
-        search: function() {
-          // custom minLength
-          var term = extractLast( this.value );
-          if ( term.length < 1 ) {
-            return false;
-          }
-        },
-        focus: function() {
-          // prevent value inserted on focus
-          return false;
-        },
-        select: function( event, ui ) {
-          var terms = split( this.value );
-          // remove the current input
-          terms.pop();
-          // add the selected item
-          terms.push( ui.item.value );
-          terms.push( "" );
-          this.value = terms.join( ", " );
           return false;
         }
       });

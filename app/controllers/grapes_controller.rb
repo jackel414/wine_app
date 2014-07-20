@@ -1,9 +1,9 @@
 class GrapesController < ApplicationController
-  before_action :set_grape, only: [:edit, :update]
+  before_action :set_grape, only: [:edit, :update, :destroy]
   before_action :check_admin
   
   def index
-    @grapes = Grape.all
+    @grapes = Grape.all.order(:name)
   end
   
   def new

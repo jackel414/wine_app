@@ -1,7 +1,7 @@
 <h1>Countries</h1>
 <ul>
   <% @countries.each do |country| %>
-  <li><%= country.name %> - <%= link_to 'Edit', edit_country_path(country.id) %></li>
+  <li><%= country.name %> - <%= link_to 'Edit', edit_country_path(country.id) %>, <%= link_to 'Delete', country_path(country.id), method: :delete, data: {confirm: 'Are you sure you want to delete this country?'} %></li>
   <% end %>
 </ul>
 

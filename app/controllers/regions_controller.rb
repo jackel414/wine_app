@@ -1,9 +1,9 @@
 class RegionsController < ApplicationController
-  before_action :set_region, only: [:edit, :update]
+  before_action :set_region, only: [:edit, :update, :destroy]
   before_action :check_admin
   
   def index
-    @regions = Region.all
+    @regions = Region.all.order(:name)
   end
   
   def new

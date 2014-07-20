@@ -7,8 +7,8 @@ class Wine < ActiveRecord::Base
   validates :price, numericality: true, :allow_blank => true
   validates :abv, numericality: true, :allow_blank => true
   
-  scope :cellared, where(stored: true)
-  scope :cataloged, where(stored: false)
+  scope :cellared, -> { where(stored: true) }
+  scope :cataloged, -> { where(stored: false) }
 
   def blank_fields
   	if self.province == ''

@@ -1,9 +1,9 @@
 class ProvincesController < ApplicationController
-  before_action :set_province, only: [:edit, :update]
+  before_action :set_province, only: [:edit, :update, :destroy]
   before_action :check_admin
   
   def index
-    @provinces = Province.all
+    @provinces = Province.all.order(:name)
   end
   
   def new

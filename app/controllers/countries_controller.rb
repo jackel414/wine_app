@@ -1,9 +1,9 @@
 class CountriesController < ApplicationController
-  before_action :set_country, only: [:edit, :update]
+  before_action :set_country, only: [:edit, :update, :destroy]
   before_action :check_admin
   
   def index
-    @countries = Country.all
+    @countries = Country.all.order(:name)
   end
   
   def new
@@ -38,7 +38,7 @@ class CountriesController < ApplicationController
   def destroy
     @country.destroy
     respond_to do |format|
-      format.html { redirect_to regions_path }
+      format.html { redirect_to countries_path }
     end
   end
   

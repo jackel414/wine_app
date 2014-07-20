@@ -1,7 +1,7 @@
 <h1>Grapes</h1>
 <ul>
   <% @grapes.each do |grape| %>
-  <li><%= grape.name %> - <%= link_to 'Edit', edit_grape_path(grape.id) %></li>
+  <li><%= grape.name %> - <%= link_to 'Edit', edit_grape_path(grape.id) %>, <%= link_to 'Delete', grape_path(grape.id), method: :delete, data: {confirm: 'Are you sure you want to delete this grape?'} %></li>
   <% end %>
 </ul>
 

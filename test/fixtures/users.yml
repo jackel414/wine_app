@@ -5,11 +5,17 @@ one:
   last_name: MyString
   email: MyString
   username: MyString
-  password: MyString
+  password_hash: MyString
+  password_salt: MyString
+  role: MyString
+  active: true
 
 two:
   first_name: MyString
   last_name: MyString
   email: MyString
   username: MyString
-  password: MyString
+  password_hash: MyString
+  password_salt: MyString
+  role: MyString
+  active: true

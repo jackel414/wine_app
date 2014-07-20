@@ -1,7 +1,7 @@
 <h1>Provinces</h1>
 <ul>
   <% @provinces.each do |province| %>
-  <li><%= province.name %> - <%= link_to 'Edit', edit_province_path(province.id) %></li>
+  <li><%= province.name %> - <%= link_to 'Edit', edit_province_path(province.id) %>, <%= link_to 'Delete', province_path(province.id), method: :delete, data: {confirm: 'Are you sure you want to delete this province?'} %></li>
   <% end %>
 </ul>
 

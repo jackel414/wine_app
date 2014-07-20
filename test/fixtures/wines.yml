@@ -3,13 +3,43 @@
 one:
   name: MyString
   grapes: MyString
-  region: MyString
-  string: MyString
+  province: MyString
+  country: MyString
   stored: false
+  region: MyString
+  winery: MyString
+  vintage: MyString
+  location: MyString
+  wine_type: MyString
+  price: 5.00
+  catalog: false
+  purchase_date: MyString
+  drink_date: MyString
+  with_meal: false
+  meal: MyString
+  notes: MyString
+  rating: 1
+  num_bottles: 0
+  abv: 5.00
 
 two:
   name: MyString
   grapes: MyString
-  region: MyString
-  string: MyString
+  province: MyString
+  country: MyString
   stored: false
+  region: MyString
+  winery: MyString
+  vintage: MyString
+  location: MyString
+  wine_type: MyString
+  price: 5.00
+  catalog: false
+  purchase_date: MyString
+  drink_date: MyString
+  with_meal: false
+  meal: MyString
+  notes: MyString
+  rating: 1
+  num_bottles: 0
+  abv: 5.00

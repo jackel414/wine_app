@@ -62,7 +62,7 @@ class WinesController < ApplicationController
     end
   end
   
-  # POST /wines/catalog/1
+  # PUT /wines/catalog/1
   def catalog
     current_bottles = @wine.num_bottles
     bottles_left = nil
@@ -88,7 +88,7 @@ class WinesController < ApplicationController
     @wine = Wine.new(wine_params)
 	  @wine.user_id = current_user.id
     if @wine.catalog == true
-      @wine.cataloged_date = Time.now
+      @wine.catalog_date = Time.now
     end
 
     respond_to do |format|
